@@ -116,3 +116,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# frontend node modules
+frontend/senior-project/node_modules
