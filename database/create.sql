@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS stock (
 	stock_id INT NOT NULL AUTO_INCREMENT,
 	name text NOT NULL,
 	ticker varchar(5),
+	exchange ENUM('NYSE','NASDAQ','SSE','JPX','HKEX','SZSE','LSE','TSX','NSE_INDIA','FSX'),
 	PRIMARY KEY (stock_id)
 );
 
