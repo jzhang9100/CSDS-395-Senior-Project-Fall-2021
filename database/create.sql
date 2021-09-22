@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS security (
 	FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
+CREATE INDEX IF NOT EXISTS security_user_id ON security (user_id);
+
 CREATE TABLE IF NOT EXISTS article (
 	article_id INT NOT NULL AUTO_INCREMENT,
 	name text NOT NULL,
@@ -41,6 +43,9 @@ CREATE TABLE IF NOT EXISTS likes (
 	user_id INT NOT NULL,
 	create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS likes_post_id ON likes (post_id);
+CREATE INDEX IF NOT EXISTS likes_user_id ON likes (user_id);
 
 CREATE TABLE IF NOT EXISTS stock (
 	stock_id INT NOT NULL AUTO_INCREMENT,
@@ -66,6 +71,9 @@ CREATE TABLE IF NOT EXISTS follower (
 	FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
+CREATE INDEX IF NOT EXISTS follower_user_id ON follower (user_id);
+CREATE INDEX IF NOT EXISTS follower_followed_user_id ON follower (followed_user_id);
+
 CREATE TABLE IF NOT EXISTS added_stocks (
 	user_id INT NOT NULL,
 	stock_id INT NOT NULL,
@@ -73,9 +81,16 @@ CREATE TABLE IF NOT EXISTS added_stocks (
 	FOREIGN KEY (stock_id) REFERENCES stock(stock_id)
 );
 
+CREATE INDEX IF NOT EXISTS added_stocks_user_id ON added_stocks (user_id);
+CREATE INDEX IF NOT EXISTS added_stocks_stock_id ON added_stocks (stock_id);
+
 CREATE TABLE IF NOT EXISTS article_stocks (
 	article_id INT NOT NULL,
 	stock_id INT NOT NULL,
 	FOREIGN KEY (article_id) REFERENCES article(article_id),
 	FOREIGN KEY (stock_id) REFERENCES stock(stock_id)
 );
+
+CREATE INDEX IF NOT EXISTS article_stocks_article_id ON article_stocks (article_id);
+CREATE INDEX IF NOT EXISTS article_stocks_stock_id ON article_stocks (stock_id);
+
