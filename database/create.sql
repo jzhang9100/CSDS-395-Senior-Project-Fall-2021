@@ -66,9 +66,9 @@ CREATE TABLE IF NOT EXISTS comments (
 
 CREATE TABLE IF NOT EXISTS follower (
 	user_id INT NOT NULL,
-	follwed_user_id INT NOT NULL,
+	followed_user_id INT NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(user_id),
-	INDEX (follwed_user_id)
+	INDEX (followed_user_id)
 );
 
 CREATE TABLE IF NOT EXISTS added_stocks (
