@@ -12,5 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+    "mysql": "latest"
   }
 }
