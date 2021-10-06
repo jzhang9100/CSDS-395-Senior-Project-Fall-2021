@@ -1,3 +1,21 @@
 .button {
   margin: 1rem 4rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.button-text {
+  margin: 0 1rem;
+  color: white;
+}
+
+#navbar {
+  background-color: #3aafa9;
+  border-bottom: 2px solid #2b7a78;
+}
+
+#streads {
+  font-size: 2rem;
+  color: white;
 }

@@ -8,7 +8,7 @@ import './NavBar.css';
 
 export default function NavBar() {
   return (
-    <Navbar bg='light' expand='lg'>
+    <Navbar expand='lg' id='navbar'>
       <Container>
         <Navbar.Brand href='#home'>
           <img
@@ -18,21 +18,23 @@ export default function NavBar() {
             className='d-inline-block align-top'
           />
         </Navbar.Brand>
-        <Navbar.Brand href='#home' className='me-auto'>
+        <Navbar.Brand href='#home' id = 'streads' className='me-auto'>
           Streads
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Nav className='justify-content-end'>
-          <Nav.Link href='#home' id='account-button' className='button'>
-            Account
-          </Nav.Link>
-          <Nav.Link href='#link' id='search-button' className='button'>
-            Search
-          </Nav.Link>
-          <Nav.Link href='#link' id='signin-button' className='button'>
-            Sign In
-          </Nav.Link>
-        </Nav>
+        <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
+          <Nav className='justify-content-end'>
+            <Nav.Link href='#home' id='account-button' className='button'>
+              <p className='button-text'>Account</p>
+            </Nav.Link>
+            <Nav.Link href='#link' id='search-button' className='button'>
+              <p className='button-text'>Search</p>
+            </Nav.Link>
+            <Nav.Link href='#link' id='signin-button' className='button'>
+              <p className='button-text'>Sign In</p>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
