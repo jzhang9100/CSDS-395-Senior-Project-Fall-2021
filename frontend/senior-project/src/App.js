@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
-import Signup from './pages/Signup';
+import Signup from './pages/Sign-up/Signup';
 import Stock from './pages/Stock';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
@@ -18,6 +18,7 @@ export default function App() {
           <NavBar />
           <Switch>
             <Route exact path='/'>
+              <Signup />
               <Home />
             </Route>
 
