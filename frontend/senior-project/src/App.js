@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Feed from './pages/Feed';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Signup from './pages/Signup';
@@ -16,6 +16,7 @@ export default function App() {
       <div className='App'>
         <Router>
           <NavBar />
+          <Login/>
           <Switch>
             <Route exact path='/'>
               <Home />
