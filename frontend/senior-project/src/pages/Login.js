@@ -1,8 +1,8 @@
 import React from 'react';
-import './Login.css';
+import '../styles/Login.css';
 export default function Login() {
   return (
-    <div className='body'>
+    <div className='login-body'>
       <div className='login-box'>
         <h1>Log In</h1>
         <div className='input-box'>
