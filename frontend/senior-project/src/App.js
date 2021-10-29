@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Feed from "./pages/Feed";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Search from "./pages/Search";
-import Signup from "./pages/Signup";
-import Stock from "./pages/Stock";
-import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
+import Feed from './pages/Feed';
+import Home from './pages/Home';
+import Login from './pages/Login/Login';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
+import Signup from './pages/Sign-up/Signup';
+import Stock from './pages/Stock';
+import './App.css';
+import NavBar from './components/NavBar/NavBar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 
