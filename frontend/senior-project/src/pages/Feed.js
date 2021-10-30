@@ -20,7 +20,6 @@ export default function Feed({ newsData, setNewsData }) {
   const article1 = newsData[0];
   const article1Time = convert(article1.datetime);
 
-
   return (
     <div className="feed-body text-center col-md-12">
       <div className="Feed-Area">
@@ -38,9 +37,9 @@ export default function Feed({ newsData, setNewsData }) {
                 <p>{article1.summary}</p>
               </Card.Text>
               <img className="article-img" src={article1.image} alt="Article 1 Photograph" />
-              <button className="continue-reading-button mt-3" href={article1.url}>
-                  Continue Reading
-              </button>
+              <a className="button continue-reading-button mt-3" href={article1.url} type="button" target=" blank">
+                Continue Reading
+              </a>
             </Card.Body>
           </Card>
         </div>
