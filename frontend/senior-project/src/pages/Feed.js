@@ -18,17 +18,8 @@ export default function Feed({ newsData, setNewsData }) {
   // components of elements in newsData include:
   //.category .datetime .headline .id .image .related .source .summary .url
   const article1 = newsData[0];
-  const article2 = newsData[1];
-  const article3 = newsData[2];
-  const article4 = newsData[3];
-  const article5 = newsData[4];
-  const article6 = newsData[5];
   const article1Time = convert(article1.datetime);
-  const article2Time = convert(article2.datetime);
-  const article3Time = convert(article3.datetime);
-  const article4Time = convert(article4.datetime);
-  const article5Time = convert(article5.datetime);
-  const article6Time = convert(article6.datetime);
+
 
   return (
     <div className="feed-body text-center col-md-12">
@@ -38,7 +29,7 @@ export default function Feed({ newsData, setNewsData }) {
         <div>
           <Card className="Feed-Box mt-3 mx-auto w-50">
             <Card.Header className="d-flex">
-              <p className="me-auto">Stock Symbol [Date] shared by [Username]</p>
+              <p className="me-auto">Stock Symbol {article1Time} shared by [Username]</p>
               <button className="share-button">Share</button>
             </Card.Header>
             <Card.Body>
