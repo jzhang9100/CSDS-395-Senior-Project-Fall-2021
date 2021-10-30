@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Search.css";
+import "./Search.css";
 import { Card, Table } from "react-bootstrap";
 
 export default function Search() {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../styles/Feed.css";
+import "./Feed.css";
 import { Card } from "react-bootstrap";
 
 export default function Feed({ newsData, setNewsData }) {
