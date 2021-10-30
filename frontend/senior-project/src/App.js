@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Feed from "./pages/Feed";
+import Feed from "./pages/Feed/Feed.js";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login.js";
 import Profile from "./pages/Profile";
-import Search from "./pages/Search";
-import Signup from "./pages/Signup";
+import Search from "./pages/Search/Search.js";
+import Signup from "./pages/Signup/Signup.js";
 import Stock from "./pages/Stock";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
