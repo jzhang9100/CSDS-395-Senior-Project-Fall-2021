@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+import EditProfile from "./pages/EditProfile";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -48,6 +49,10 @@ export default function App() {
 
               <Route path="/stock">
                 <Stock />
+              </Route>
+
+              <Route path="/editprofile">
+                <EditProfile />
               </Route>
             </Switch>
           </Container>
