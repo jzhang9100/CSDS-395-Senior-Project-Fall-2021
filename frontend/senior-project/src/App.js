@@ -35,7 +35,7 @@ export default function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-                <Signup />
+                {/*<Signup />*/}
                 <Home />
               </Route>
 
