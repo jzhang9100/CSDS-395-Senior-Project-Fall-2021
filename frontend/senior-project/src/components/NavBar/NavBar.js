@@ -25,6 +25,11 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="justify-content-end">
+            <LinkContainer to="/feed">
+                <Nav.Link className="button">
+                  <p className="button-text">Feed</p>
+                </Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/profile">
                 <Nav.Link id="account-button" className="button">
                   <p className="button-text">Account</p>

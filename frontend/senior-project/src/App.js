@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Feed from "./pages/Feed";
 import Home from "./pages/Home";
@@ -13,6 +13,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 
 export default function App() {
+  const finnhubApiKey = "c1se9aqad3i9o8uaclc0";
+  const [newsData, setNewsData] = useState([]); //variable to store newsData
+
+  const getNewsData = async () => {
+    await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
+      .then((Response) => Response.json())
+      .then((data) => setNewsData(data));
+  };
+
+  useEffect(() => {
+    getNewsData();
+  }, []);
+
   return (
     <>
       <div className="App">
@@ -22,13 +35,11 @@ export default function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-                <Signup />
+                {/*<Signup />*/}
                 <Home />
               </Route>
 
-              <Route path="/feed">
-                <Feed />
-              </Route>
+              <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path="/login">
                 <Login />
