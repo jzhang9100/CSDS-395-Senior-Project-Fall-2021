@@ -1,5 +1,5 @@
 import React from "react";
-import './signup.css'
+import '../styles/signup.css'
 export default function Signup() {
     return (     
         <div className = 'signup-body'>

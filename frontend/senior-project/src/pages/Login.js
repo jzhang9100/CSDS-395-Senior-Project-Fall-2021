@@ -1,5 +1,5 @@
 import React from 'react';
-import './Login.css';
+import '../styles/Login.css';
 export default function Login() {
   return (
     <div className='login-body'>
