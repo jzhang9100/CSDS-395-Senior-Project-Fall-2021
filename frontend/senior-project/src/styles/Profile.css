@@ -1,0 +1,71 @@
+.app {
+  margin: 0;
+  padding: 0;
+  background-color: #def2f1;
+}
+
+.profile-box {
+  background-color: #3aafa9;
+  display: flex;
+  border-radius: 10px;
+}
+.container {
+  margin-left: 0;
+}
+.profile-picture {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  margin: 2rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.stock {
+  background-color: white;
+  margin-top: 5rem;
+  width: 14rem;
+  height: 8rem;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.stock h2 {
+  font-size: 1.5rem;
+}
+.stock h3 {
+  font-size: 1rem;
+}
+
+.stock-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 1rem;
+}
+
+.stock-image {
+  width: 6rem;
+  height: 4rem;
+  border: 1px solid black;
+  margin: auto;
+}
+
+.updates h3 {
+  background-color: #3aafa9;
+  color: white;
+  margin: auto;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.updates h4 {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
