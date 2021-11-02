@@ -11,9 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-    "mysql": "latest"
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mysql": "latest",
     "nodemon": "^2.0.12",
     "react-router-bootstrap": "^0.25.0"
   }
