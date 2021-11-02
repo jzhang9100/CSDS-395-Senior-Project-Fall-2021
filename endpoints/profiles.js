@@ -16,7 +16,7 @@ router.get('/:uuid', (req, res) => {
         console.log('Profile Data for ${uuid}: ');
         console.log(rows);
 
-        var profieJSON = JSON.stringify(rows)
+        var profileJSON = JSON.stringify(rows)
         res.contentType('application/json');
         res.send(profileJSON);
     });
