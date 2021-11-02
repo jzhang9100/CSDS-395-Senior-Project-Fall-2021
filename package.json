@@ -16,5 +16,6 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.12"
+    "react-router-bootstrap": "^0.25.0"
   }
 }

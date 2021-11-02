@@ -5,6 +5,10 @@
   background-color: #17252a;
 }
 
+#signin-button {
+  margin-right: 0;
+}
+
 .button-text {
   margin: 0 1rem;
   color: white;
