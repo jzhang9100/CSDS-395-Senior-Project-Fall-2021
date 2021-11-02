@@ -1,0 +1,36 @@
+
+  .search-body {
+    background-color: #def2f1;
+    height: 200vh;
+  }
+
+  .Stats-Area {
+    padding-top: 5rem;
+    padding-left: 30rem;
+    color: #def2f1;
+  }
+
+  .Stock-Stats-Header{
+    background-color: #2b7a78 !important;
+    color: #def2f1;
+    font-size: 1.5rem;
+  }
+
+  .Result-Box {
+    border-radius: 0px;
+    color: #def2f1;
+  }
+  
+  .Stock-Stats-Card-Body{
+    border: none;
+    background-color: #2b7a78 !important;
+    color: #def2f1;
+  }
+
+  .Stock-Stats {
+      color: #def2f1;
+  }
+
+  .Stock-Stats-Table{
+    color: #2b7a78;
+  }
