@@ -1,0 +1,33 @@
+
+  .search-body {
+    background-color: #def2f1;
+    height: 400vh;
+  }
+
+  .Info-Area {
+    padding-top: 2rem;
+    padding-left: 30rem;
+    color: #def2f1;
+  }
+
+  .Company-Info-Header{
+    background-color: #2b7a78 !important;
+    color: #def2f1;
+    font-size: 1.5rem;
+  }
+
+  .Company-Info-Text{
+    color: #def2f1;
+  }
+
+  .Result-Box {
+    background-color: #def2f1 !important;
+    border-radius: 0px;
+    color: #def2f1;
+  }
+  
+  .Company-Info-Card-Body{
+    border: none;
+    background-color: #2b7a78 !important;
+    color: #def2f1;
+  }
