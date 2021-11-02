@@ -1,4 +1,3 @@
-
 const express = require("express");
 var cors = require('cors');
 var mysql = require('mysql');
@@ -10,6 +9,8 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded());
+
+var profiles = require('./endpoints/profiles')
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
@@ -47,6 +48,11 @@ connection.end();
     
 });
 
+
+app.use('/profiles', profiles)
+
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
-})
+  console.log(`Server listening on ${PORT}`);
+});
+
+
