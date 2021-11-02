@@ -1,0 +1,25 @@
+.button {
+  margin: 1rem 4rem;
+  border: 2px solid #17252a;
+  border-radius: 10px;
+  background-color: #17252a;
+}
+
+#signin-button {
+  margin-right: 0;
+}
+
+.button-text {
+  margin: 0 1rem;
+  color: white;
+}
+
+#navbar {
+  background-color: #3aafa9;
+  border-bottom: 2px solid #2b7a78;
+}
+
+#streads {
+  font-size: 2rem;
+  color: white;
+}

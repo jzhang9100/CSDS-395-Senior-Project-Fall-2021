@@ -1,0 +1,52 @@
+.signup-button{
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    width: 85%;
+}
+
+
+#username{
+
+}
+
+.signup-body{
+    background-color: #3AAFA9;
+    height: 100vh;
+}
+
+.Signup-Box{
+height: 35%;
+width: 45%;
+/* padding-left: 1rem; */
+/* margin-left:1rem; */
+margin: auto;
+padding-top: 5rem;
+}
+
+/* em is font size of nearest parent, fem*/
+
+.Special-Box{
+    background-color: #def2F1;
+    height: 120%;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /*watch a video on flexbox*/
+    align-items: center;
+    margin-top: 2rem;
+}
+
+h1{
+    margin-bottom: 2rem;
+}
+
+
+#button{
+    width: 85%;
+    background: black;
+    color: white;
+    border-radius: 10px;
+}

@@ -1,0 +1,29 @@
+.blurb-card {
+  width: 47%;
+}
+
+.streads-blurb {
+  background-color: #3aafa9 !important;
+  border-radius: 15px;
+  border: 4px solid #2b7a78;
+}
+
+.blurb-img {
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+
+.get-started-button {
+  border-radius: 10px;
+  background-color: #3aafa9;
+}
+
+.get-started-text {
+  margin: 0 1rem;
+  color: black;
+}
+
+.home-testimonials {
+    background-color: #2b7a78;
+    height: 450px;
+}

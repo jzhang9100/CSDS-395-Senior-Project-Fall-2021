@@ -1,0 +1,44 @@
+.search-body {
+  background-color: #2b7a78;
+  height: 100vh;
+}
+
+.Search-Bar {
+  padding-top: 5rem;
+}
+
+.Results-Area {
+  padding-top: 5rem;
+}
+
+.Result-Box {
+  background-color: #def2f1 !important;
+  border-radius: 15px;
+}
+
+.search-button {
+  border: 2px solid #17252a;
+  border-radius: 5px;
+  background-color: #17252a;
+  color: white;
+  width: 15%;
+}
+
+input {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.view-stock-button {
+  border: 2px solid #17252a;
+  border-radius: 5px;
+  background-color: #17252a;
+  color: white;
+  width: 50%;
+  height: 15%;
+}
+
+.Stock-Info {
+  text-align: left;
+}
