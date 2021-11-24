@@ -13,7 +13,7 @@ export default function Feed({ newsData, setNewsData }) {
 
   useEffect(() => {
     getNewsData();
-  }, []);
+  });
 
   // components of elements in newsData include:
   //.category .datetime .headline .id .image .related .source .summary .url
