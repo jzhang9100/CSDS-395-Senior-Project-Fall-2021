@@ -19,12 +19,10 @@ class Signup extends React.Component {
     
     onUsernameChange(event) {
     this.setState({ username: event.target.value });
-        console.log(event.target.value);
   }
 
   onPasswordChange(event) {
     this.setState({ password1: event.target.value });
-      console.log(this.state.username);
   }
     
   onMatchingPasswordChange(event) {
@@ -34,21 +32,22 @@ class Signup extends React.Component {
       } else {
           this.setState({ matching: '' });
       }
-      console.log(this.state.matching);
   }
     
     handleSubmit(event) { 
-        fetch('http://localhost:3001/api/resopnse', {
+        fetch('http://localhost:3001/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password1
+                "username": this.state.username,
+                "password": this.state.password1
             })
-        }).then((response) => {console.log(response)});
+        }).then((response) => {
+            console.log(response);
+        });
     }
     
     render() {
