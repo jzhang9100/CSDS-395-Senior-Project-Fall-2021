@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles/Search.css";
 import { Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import Stock from "./Stock.js";
 import { updateStockTicker } from "../App";
 
 export default function Search() {

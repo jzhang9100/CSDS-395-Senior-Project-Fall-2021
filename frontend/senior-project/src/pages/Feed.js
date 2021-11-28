@@ -1,47 +1,39 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/Feed.css";
 import { Card } from "react-bootstrap";
 
-export default function Feed({ newsData, setNewsData }) {
-  const finnhubApiKey = "c1se9aqad3i9o8uaclc0";
-
-  const getNewsData = async () => {
-    await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
-      .then((Response) => Response.json())
-      .then((data) => setNewsData(data));
-  };
-
-  useEffect(() => {
-    getNewsData();
-  });
-
+export default function Feed({ newsData }) {
   // components of elements in newsData include:
   //.category .datetime .headline .id .image .related .source .summary .url
-  const article1 = newsData[0];
-  const article1Time = convert(article1.datetime);
 
   return (
     <div className="feed-body text-center col-md-12">
       <div className="Feed-Area">
         <h1>News Feed</h1>
         {/* Articles */}
-        <div>
-          <Card className="Feed-Box mt-3 mx-auto w-50">
-            <Card.Header className="d-flex">
-              <p className="me-auto">Stock Symbol {article1Time} shared by [Username]</p>
-              <button className="share-button">Share</button>
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>
-                <h4>{article1.headline}</h4>
-                <p>{article1.summary}</p>
-              </Card.Text>
-              <img className="article-img" src={article1.image} alt="Article 1 Photograph" />
-              <a className="button continue-reading-button mt-3" href={article1.url} type="button" target=" blank">
-                Continue Reading
-              </a>
-            </Card.Body>
-          </Card>
+        <div id="articles-area">
+          {newsData.map((article) => {
+            return (
+              <Card className="Feed-Box mt-3 mx-auto w-50" key={article.id}>
+                <Card.Header className="d-flex">
+                  <div className="me-auto">
+                    <p>Stock Symbol {convert(article.datetime)} shared by [Username]</p>
+                  </div>
+                  <button className="share-button">Share</button>
+                </Card.Header>
+                <Card.Body>
+                  <div>
+                    <h4>{article.headline}</h4>
+                    <p>{article.summary}</p>
+                  </div>
+                  <img className="article-img" src={article.image} alt="Article Photograph" />
+                  <a className="button continue-reading-button mt-3" href={article.url} type="button" target=" blank">
+                    Continue Reading
+                  </a>
+                </Card.Body>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>
