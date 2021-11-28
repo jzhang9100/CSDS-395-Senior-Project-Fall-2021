@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "../styles/Search.css";
 import { Card, Table } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import Stock from "./Stock.js";
+import { updateStockTicker } from "../App";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState(""); //the ticker symbol searched for
@@ -33,6 +36,7 @@ export default function Search() {
       .then((response) => {
         if (response["Note"] == null) {
           setStockInfo(response);
+          updateStockTicker(response["Symbol"]);
         }
       });
   }
@@ -89,7 +93,11 @@ export default function Search() {
                 </tbody>
               </Table>
             </div>
-            <button className="view-stock-button">View Stock</button>
+            <LinkContainer to="/stock">
+              <button type="button" className="button view-stock-button">
+                View Stock
+              </button>
+            </LinkContainer>
           </Card.Body>
         </Card>
       </div>
