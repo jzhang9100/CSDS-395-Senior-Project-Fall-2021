@@ -21,6 +21,7 @@ export default function App() {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
       .then((data) => setNewsData(data));
+    console.log("fetched news Data");
   };
 
   useEffect(() => {
