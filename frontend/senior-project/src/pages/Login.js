@@ -1,4 +1,6 @@
 import React from 'react';
+import { Card, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import '../styles/Login.css';
 export default function Login() {
   return (
@@ -10,15 +12,23 @@ export default function Login() {
             type='text'
             className='login-button'
             id='username'
-            placeholder='username'
+            placeholder='Username'
           />
           <input
             type='text'
             className='login-button'
             id='password'
-            placeholder='password'
+            placeholder='Password'
           />
           <button id='submit-button'>Log In</button>
+        </div>
+        <div className = "register-link">
+          <p>New to Streads?</p>
+          <LinkContainer to="/signup" className="my-2 ms-4 shadow">
+            <Nav.Link className="register-button">
+              <p className="register-text">Register Here!</p>
+            </Nav.Link>
+          </LinkContainer>
         </div>
       </div>
     </div>

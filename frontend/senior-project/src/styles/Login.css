@@ -1,6 +1,7 @@
 .login-body {
   background-color: #3aafa9;
   height: 100vh;
+  border-radius: 10px;
 }
 .login-box {
   width: 45%;
@@ -35,5 +36,19 @@
   border: none;
   color: white;
   padding: 0.75rem;
+  border-radius: 10px;
+}
+
+.register-link {
+  background: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.register-button {
+  background: #3aafa9;
   border-radius: 10px;
 }
