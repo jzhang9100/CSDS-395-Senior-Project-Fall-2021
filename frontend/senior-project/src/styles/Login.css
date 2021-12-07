@@ -40,7 +40,7 @@
 }
 
 .register-link {
-  background: red;
+  background: #3aafa9;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -49,6 +49,17 @@
 }
 
 .register-button {
-  background: #3aafa9;
+  background: black;
   border-radius: 10px;
+  align-items: center;
+}
+
+.register-text {
+  margin-bottom: 0;
+}
+
+.register-button-text {
+  color: white;
+  align-items: center;
+  margin-bottom: 0;
 }
