@@ -1,16 +1,17 @@
-import {React, useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Feed from './pages/Feed';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import Signup from './pages/Signup';
-import Stock from './pages/Stock';
-import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Feed from "./pages/Feed";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Search from "./pages/Search";
+import Signup from "./pages/Signup";
+import Stock from "./pages/Stock";
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+var stockTicker;
 
 function setToken(token) {
     var date = new Date();
@@ -37,6 +38,7 @@ export default function App() {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
       .then((data) => setNewsData(data));
+    console.log("fetched news Data");
   };
     
       const token = getToken();
@@ -51,7 +53,7 @@ export default function App() {
   } 
           return (
     <>
-      <div className='App'>
+      <div className="App">
         <Router>
           <NavBar />
           <Container>
@@ -65,23 +67,22 @@ export default function App() {
 
               <Route path='/login'>
                 <Login setToken={setToken}/>
+
               </Route>
 
-              <Route path='/profile'>
+              <Route path="/profile">
                 <Profile />
               </Route>
 
-              <Route path='/search'>
+              <Route path="/search">
                 <Search />
               </Route>
 
-              <Route path='/signup'>
+              <Route path="/signup">
                 <Signup />
               </Route>
 
-              <Route path='/stock'>
-                <Stock />
-              </Route>
+              <Route path="/stock" render={(props) => <Stock {...props} stockTicker={stockTicker} />} />
             </Switch>
           </Container>
         </Router>
@@ -90,4 +91,8 @@ export default function App() {
   );
     //  }
   
+}
+
+export function updateStockTicker(ticker) {
+  stockTicker = ticker;
 }

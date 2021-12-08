@@ -27,7 +27,7 @@ class Signup extends React.Component {
     
   onMatchingPasswordChange(event) {
       this.setState({ password2: event.target.value});
-      if(event.target.value != this.state.password1){
+      if(event.target.value !== this.state.password1){
           this.setState({ matching: 'Passwords do not match' });
       } else {
           this.setState({ matching: '' });

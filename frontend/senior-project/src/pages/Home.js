@@ -17,20 +17,20 @@ export default function Home() {
         <Card className="blurb-card border-0 bg-transparent mx-auto">
           <Card.Body className="streads-blurb d-flex p-0 m-0">
             <img className="blurb-img w-50 h-100" src={Blurb1} alt="Blurb 1 Photograph" />
-            <Card.Text className="h-100 my-auto mt-3 mx-3">
+            <div className="h-100 my-auto mt-4 mx-3">
               <h5>STREADS TO THE MOON</h5>
               <p>Streads keeps you updated with the latest news on stocks as well as any change in the market</p>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
 
         <Card className="blurb-card border-0 bg-transparent mx-auto">
           <Card.Body className="streads-blurb d-flex p-0 m-0">
             <img className="blurb-img w-50 h-100" src={Blurb2} alt="Blurb 2 Photograph" />
-            <Card.Text className="h-100 my-auto mt-4 mx-3">
+            <div className="h-100 my-auto mt-4 mx-3">
               <h5>DON'T BE A DOWNER</h5>
               <p>Connect with friends and share news to stay invested across the market</p>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
       </div>
@@ -59,31 +59,31 @@ export default function Home() {
         <Card className="testimonial-card my-auto mx-auto h-75 w-25 shadow-lg">
           <Card.Body>
             <img className="testimonial-img h-50 w-50" src={Testimonial1} alt="Testimonial 1 Photograph" />
-            <Card.Text className="h-100 my-auto mt-3 mx-3">
+            <div className="h-100 my-auto mt-3 mx-3">
               <p>"Streads is great, I use it every morning to stay up to date on my investments."</p>
               <h4>Jeff L</h4>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
 
         <Card className="testimonial-card my-auto mx-auto h-75 w-25 shadow-lg">
           <Card.Body>
             <img className="testimonial-img h-50 w-50" src={Testimonial2} alt="Testimonial 2 Photograph" />
-            <Card.Text className="h-100 my-auto mt-3 mx-3">
+            <div className="h-100 my-auto mt-3 mx-3">
               <p>"It's hard for my friends and I to learn more about our investments without Streads."</p>
               <h4>Marissa Q</h4>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
 
         <Card className="testimonial-card my-auto mx-auto h-75 w-25 shadow-lg">
           <Card.Body>
             <img className="testimonial-img h-50 w-50" src={Testimonial3} alt="Testimonial 3 Photograph" />
-            <Card.Text className="h-100 my-auto mt-3 mx-3">
+            <div className="h-100 my-auto mt-3 mx-3">
               <p>"With Streads, I can learn more about stocks I don't have."</p>
               <br />
               <h4>Kevin N</h4>
-            </Card.Text>
+            </div>
           </Card.Body>
         </Card>
       </div>

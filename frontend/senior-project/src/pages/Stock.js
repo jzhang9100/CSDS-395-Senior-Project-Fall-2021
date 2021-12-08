@@ -10,17 +10,17 @@ import "../components/StockView/CompanyInfo.css";
 import "../components/StockView/News.css";
 import "../components/StockView/Comps.css";
 
-export default function Stock() {
-    return (     
-        <div className="search-body text-center col-md-12">
-            <div>
-                <StockGraph name="Stock Ticker (Stock Name)">
-                </StockGraph>
-                <StockStats></StockStats>
-                <CompanyInfo></CompanyInfo>
-                <News></News>
-                <Comps></Comps>
-            </div>
-        </div> 
-    );
+export default function Stock( { stockTicker }) {
+  return (
+    <div className="search-body text-center col-md-12">
+      <div>
+        <p>{stockTicker}</p>
+        <StockGraph name="Stock Ticker (Stock Name)"></StockGraph>
+        <StockStats></StockStats>
+        <CompanyInfo></CompanyInfo>
+        <News></News>
+        <Comps></Comps>
+      </div>
+    </div>
+  );
 }
