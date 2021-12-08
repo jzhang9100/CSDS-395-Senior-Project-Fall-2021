@@ -10,8 +10,8 @@ router.use(function timeLog (req, res, next) {
 
 // Profile Endpoints
 router.get('/', (req, res) => {
-
-    connection.query(`SELECT * FROM user WHERE userid=(SELECT user_id FROM currently_loggedin WHERE token=${req.cookie.token});`, (err,rows) => {
+    
+    connection.query(`SELECT * FROM user WHERE user_id=(SELECT user_id FROM currently_loggedin WHERE token="${req.query.token}");`, (err,rows) => {
         if(err) throw err;
         console.log('Profile Data for ${uuid}: ');
         console.log(rows);
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
  * Expected  input is a JSON to replace whats in the DB
  */
 router.put('/', (req, res) => {
-    connection.query(`UPDATE user SET fname=${req.body.fname}, lname=${req.body.lname}, username=${req.body.username}, bio=${req.body.bio}, profile_pic=${req.body.profile_pic} WHERE userid=(SELECT user_id FROM currently_loggedin WHERE token=${req.cookie.token});`, (err,rows) => {
+    connection.query(`UPDATE user SET fname="${req.body.fname}", lname="${req.body.lname}", username="${req.body.username}", bio="${req.body.bio}", profile_pic="${req.body.profile_pic}" WHERE user_id=(SELECT user_id FROM currently_loggedin WHERE token="${req.query.token}");`, (err,rows) => {
         if(err) throw err;
         res.sendStatus(200);
     });
