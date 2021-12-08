@@ -12,6 +12,23 @@ import NavBar from './components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 
+function setToken(token) {
+    var date = new Date();
+    date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
+    document.cookie = `token=${token}; expires=${date};`;
+}
+
+function getToken() {
+    var cookies = document.cookie.split('; ');
+    for(var i = 0; i < cookies.length; i++){
+        if(cookies[i].includes("token=")){
+            return cookies[i].substring(6);
+        }
+    }
+    
+    return null;
+}
+
 export default function App() {
   const finnhubApiKey = "c1se9aqad3i9o8uaclc0";
   const [newsData, setNewsData] = useState([]); //variable to store newsData
@@ -21,12 +38,18 @@ export default function App() {
       .then((Response) => Response.json())
       .then((data) => setNewsData(data));
   };
-
-  useEffect(() => {
+    
+      const token = getToken();
+    
+      useEffect(() => {
     getNewsData();
   }, []);
 
-  return (
+  if(!token) {
+      console.log(token)
+    return <Login setToken={setToken} />
+  } 
+          return (
     <>
       <div className='App'>
         <Router>
@@ -41,7 +64,7 @@ export default function App() {
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path='/login'>
-                <Login />
+                <Login setToken={setToken}/>
               </Route>
 
               <Route path='/profile'>
@@ -65,4 +88,6 @@ export default function App() {
       </div>
     </>
   );
+    //  }
+  
 }
