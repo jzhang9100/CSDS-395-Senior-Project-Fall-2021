@@ -17,7 +17,7 @@ export default function Feed({ newsData }) {
               <Card className="Feed-Box mt-3 mx-auto w-50" key={article.id}>
                 <Card.Header className="d-flex">
                   <div className="me-auto">
-                    <p>Stock Symbol {convert(article.datetime)} shared by [Username]</p>
+                    <p>{convert(article.datetime)}</p>
                   </div>
                   <button className="share-button">Share</button>
                 </Card.Header>
