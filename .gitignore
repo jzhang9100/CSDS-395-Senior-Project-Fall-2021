@@ -120,3 +120,5 @@ dist
 
 # frontend node modules
 frontend/senior-project/node_modules
+
+.env
