@@ -1,11 +1,13 @@
 const express = require("express");
 var cors = require('cors');
+let cookieParser = require('cookie-parser');
 
 const PORT = 3001;
 
 const app = express();
 
 app.use(cors());
+app.use(cookieParser())
 
 var profiles = require('./endpoints/profiles')
 var register = require('./endpoints/register')
