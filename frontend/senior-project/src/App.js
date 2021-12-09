@@ -14,20 +14,20 @@ import { Container } from "react-bootstrap";
 var stockTicker;
 
 function setToken(token) {
-    var date = new Date();
-    date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
-    document.cookie = `token=${token}; expires=${date};`;
+  var date = new Date();
+  date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
+  document.cookie = `token=${token}; expires=${date};`;
 }
 
 function getToken() {
-    var cookies = document.cookie.split('; ');
-    for(var i = 0; i < cookies.length; i++){
-        if(cookies[i].includes("token=")){
-            return cookies[i].substring(6);
-        }
+  var cookies = document.cookie.split("; ");
+  for (var i = 0; i < cookies.length; i++) {
+    if (cookies[i].includes("token=")) {
+      return cookies[i].substring(6);
     }
-    
-    return null;
+  }
+
+  return null;
 }
 
 export default function App() {
@@ -40,18 +40,21 @@ export default function App() {
       .then((data) => setNewsData(data));
     console.log("fetched news Data");
   };
-    
-      const token = getToken();
-    
-      useEffect(() => {
+
+  const token = getToken();
+
+  useEffect(() => {
     getNewsData();
   }, []);
 
-  if(!token) {
-      console.log(token)
-    return <Login setToken={setToken} />
-  } 
-          return (
+  let defaultPage = <Home />;
+
+  if (!token) {
+    console.log(token);
+    defaultPage = <Login setToken={setToken} />;
+  }
+
+  return (
     <>
       <div className="App">
         <Router>
@@ -59,15 +62,13 @@ export default function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-                {/*<Signup />*/}
-                <Home />
+                {defaultPage}
               </Route>
 
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
-              <Route path='/login'>
-                <Login setToken={setToken}/>
-
+              <Route path="/login">
+                <Login setToken={setToken} />
               </Route>
 
               <Route path="/profile">
@@ -89,8 +90,7 @@ export default function App() {
       </div>
     </>
   );
-    //  }
-  
+  //  }
 }
 
 export function updateStockTicker(ticker) {
