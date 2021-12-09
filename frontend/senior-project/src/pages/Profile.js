@@ -1,7 +1,33 @@
 import React from 'react';
 import '../styles/Profile.css';
 
+function setToken(token) {
+  var date = new Date();
+  date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
+  document.cookie = `token=${token}; expires=${date};`;
+}
+
+function getToken() {
+  var cookies = document.cookie.split('; ');
+  for (var i = 0; i < cookies.length; i++) {
+    if (cookies[i].includes('token=')) {
+      return cookies[i].substring(6);
+    }
+  }
+
+  return null;
+}
+
+async function updateProfile() {
+  fetch(`http://localhost:3001/profiles?token=${getToken()}`)
+    .then((response) => response.json())
+    .then((response) => {
+      document.querySelector('.username').innerHTML = response[0].username;
+      document.querySelector('.bio').innerHTML = response[0].bio;
+    });
+}
 export default function Profile() {
+  updateProfile();
   return (
     <div className='body'>
       <div className='profile-box'>
