@@ -8,6 +8,7 @@ export default function Profile({ token }) {
     fetch(`http://localhost:3001/profiles?token=${token}`)
       .then((response) => response.json())
       .then((response) => {
+        console.log(response["user_data"][0]);
         document.querySelector(".username").innerHTML = response["user_data"][0].username;
         document.querySelector(".bio").innerHTML = response["user_data"][0].bio;
       });
@@ -47,7 +48,7 @@ export default function Profile({ token }) {
       <div className="holdings">
         {portfolio.map((stock) => {
           return (
-            <div className="stock">
+            <div className="stock" key={stock.ticker}>
               <div className="stock-info">
                 {" "}
                 <h2>{stock.ticker}</h2>
