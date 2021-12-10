@@ -8,6 +8,20 @@ router.use(function timeLog (req, res, next) {
   next()
 })
 
+//Grabs an article
+router.get('/get', (req, res) => {
+    var article_id = req.query.id;
+    console.log(article_id);
+    connection.query(`SELECT * FROM article WHERE article_id=${article_id}`, (err, rows) => {
+        if(err) throw err;
+        console.log(rows);
+        var articleJSON = JSON.stringify({"article_data" : rows});
+        console.log(articleJSON);
+        res.contentType('application/json');
+        res.send(articleJSON);
+    });
+});
+
 // Articles Endpoints
 router.get('/:ticker', (req, res) => {
     var uuid = req.param('ticker')

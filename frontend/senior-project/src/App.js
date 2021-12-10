@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+import Thread from "./pages/Thread";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -91,6 +92,10 @@ export default function App() {
               </Route>
 
               <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+
+              <Route path="/thread/:articleId">
+                <Thread token={getToken()} />
+              </Route>
             </Switch>
           </Container>
         </Router>
