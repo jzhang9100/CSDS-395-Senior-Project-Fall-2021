@@ -39,18 +39,14 @@ export default function App() {
       .then((Response) => Response.json())
       .then((data) => {
         setNewsData(data)
-        console.log(data);
         data.forEach((article) => {
           fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
             method: "POST",
           });
         })
       });
-    console.log("fetched news Data");
+    console.log("fetched news data.");
   };
-
-  async function insertNewsData() {
-  }
 
   const token = getToken();
 
