@@ -9,6 +9,7 @@ export default function Search({ token }) {
   const [stockInfo, setStockInfo] = useState("");
   const [stockQuote, setStockQuote] = useState("");
   const [profileInfo, setProfileInfo] = useState("");
+  const [portfolio, setPortfolio] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -46,15 +47,25 @@ export default function Search({ token }) {
       .then((response) => response.json())
       .then((response) => {
         setProfileInfo(response["user_data"][0]);
+        setPortfolio(response["stock_data"]);
       });
   }
 
   async function addToPortfolio() {
-    console.log("trying " + profileInfo.user_id + " " + stockInfo["Symbol"]);
-    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_id=${stockInfo["Symbol"]}`)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
+    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+      method: "POST",
+    })
+      .then(() => {
+        updateProfile();
+      });
+  }
+
+  async function removeFromPortfolio() {
+    fetch(`http://localhost:3001/profiles/removeStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+      method: "POST",
+    })
+      .then(() => {
+        updateProfile();
       });
   }
 
@@ -116,12 +127,15 @@ export default function Search({ token }) {
             </div>
             <div className="d-flex justify-content-center">
               <LinkContainer to="/stock">
-                <button type="button" className="button view-stock-button me-3">
+                <button type="button" className="button view-stock-button me-2">
                   View Stock
                 </button>
               </LinkContainer>
-              <button type="button" className="button add-stock-button ms-3" onClick={addToPortfolio}>
-                Add to Portfolio
+              <button type="button" className="button view-stock-button me-2 ms-2" onClick={addToPortfolio}>
+                Add
+              </button>
+              <button type="button" className="button view-stock-button ms-2" onClick={removeFromPortfolio}>
+                Remove
               </button>
             </div>
           </Card.Body>

@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+import Thread from "./pages/Thread";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -37,8 +38,15 @@ export default function App() {
   const getNewsData = async () => {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
-      .then((data) => setNewsData(data));
-    console.log("fetched news Data");
+      .then((data) => {
+        setNewsData(data)
+        data.forEach((article) => {
+          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
+            method: "POST",
+          });
+        })
+      });
+    console.log("fetched news data.");
   };
 
   const token = getToken();
@@ -84,6 +92,10 @@ export default function App() {
               </Route>
 
               <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+
+              <Route path="/thread/:articleId">
+                <Thread token={getToken()} />
+              </Route>
             </Switch>
           </Container>
         </Router>

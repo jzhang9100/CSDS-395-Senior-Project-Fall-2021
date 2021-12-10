@@ -10,6 +10,7 @@ app.use(cors());
 app.use(cookieParser())
 
 var profiles = require('./endpoints/profiles')
+var articles = require('./endpoints/articles')
 var register = require('./endpoints/register')
 var login = require('./endpoints/login')
 var logout = require('./endpoints/logout')
@@ -24,6 +25,7 @@ app.use('/login', login)
 app.use('/logout', logout)
 app.use('/loginToken', loginToken)
 app.use('/profiles', profiles)
+app.use('/articles', articles)
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
