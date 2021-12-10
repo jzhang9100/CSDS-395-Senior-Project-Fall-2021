@@ -7,11 +7,8 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
-<<<<<<< HEAD
 import EditProfile from "./pages/EditProfile";
-=======
 import Thread from "./pages/Thread";
->>>>>>> master
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -74,13 +71,7 @@ export default function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-<<<<<<< HEAD
-                <EditProfile />
-                {/* <Signup />
-                <Home /> */}
-=======
                 {defaultPage}
->>>>>>> master
               </Route>
 
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
