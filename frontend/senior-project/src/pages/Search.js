@@ -50,8 +50,9 @@ export default function Search({ token }) {
   }
 
   async function addToPortfolio() {
-    console.log("trying " + profileInfo.user_id + " " + stockInfo["Symbol"]);
-    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_id=${stockInfo["Symbol"]}`)
+    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+      method: "POST",
+    })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
