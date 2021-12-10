@@ -4,7 +4,7 @@ import { Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { updateStockTicker } from "../App";
 
-export default function Search() {
+export default function Search({ token }) {
   const [searchTerm, setSearchTerm] = useState(""); //the ticker symbol searched for
   const [stockInfo, setStockInfo] = useState("");
   const [stockQuote, setStockQuote] = useState("");

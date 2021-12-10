@@ -68,15 +68,15 @@ export default function App() {
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path="/login">
-                <Login setToken={setToken} />
+                <Login setToken={getToken()} />
               </Route>
 
               <Route path="/profile">
-                <Profile />
+                <Profile token={getToken()} />
               </Route>
 
               <Route path="/search">
-                <Search />
+                <Search token={getToken()} />
               </Route>
 
               <Route path="/signup">
