@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Feed from "./pages/Feed";
 import Home from "./pages/Home";
@@ -7,49 +7,104 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+<<<<<<< HEAD
 import EditProfile from "./pages/EditProfile";
+=======
+import Thread from "./pages/Thread";
+>>>>>>> master
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
+var stockInfo;
+
+function setToken(token) {
+  var date = new Date();
+  date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
+  document.cookie = `token=${token}; expires=${date};`;
+}
+
+function getToken() {
+  var cookies = document.cookie.split("; ");
+  for (var i = 0; i < cookies.length; i++) {
+    if (cookies[i].includes("token=")) {
+      return cookies[i].substring(6);
+    }
+  }
+
+  return null;
+}
 
 export default function App() {
+  const finnhubApiKey = "c1se9aqad3i9o8uaclc0";
+  const [newsData, setNewsData] = useState([]); //variable to store newsData
+
+  const getNewsData = async () => {
+    await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
+      .then((Response) => Response.json())
+      .then((data) => {
+        setNewsData(data)
+        data.forEach((article) => {
+          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
+            method: "POST",
+          });
+        })
+      });
+    console.log("fetched news data.");
+  };
+
+  const token = getToken();
+
+  useEffect(() => {
+    getNewsData();
+  }, []);
+
+  let defaultPage = <Home />;
+
+  if (!token) {
+    console.log(token);
+    defaultPage = <Login setToken={setToken} />;
+  }
+
   return (
     <>
       <div className="App">
         <Router>
           <NavBar />
-          {/*<Login />*/}
           <Container>
             <Switch>
               <Route exact path="/">
+<<<<<<< HEAD
                 <EditProfile />
                 {/* <Signup />
                 <Home /> */}
+=======
+                {defaultPage}
+>>>>>>> master
               </Route>
 
-              <Route path="/feed">
-                <Feed />
-              </Route>
+              <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path="/login">
-                <Login />
+                <Login setToken={getToken()} />
               </Route>
 
               <Route path="/profile">
-                <Profile />
+                <Profile token={getToken()} />
               </Route>
 
               <Route path="/search">
-                <Search />
+                <Search token={getToken()} />
               </Route>
 
               <Route path="/signup">
                 <Signup />
               </Route>
 
-              <Route path="/stock">
-                <Stock />
+              <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+
+              <Route path="/thread/:articleId">
+                <Thread token={getToken()} />
               </Route>
 
               <Route path="/editprofile">
@@ -61,4 +116,9 @@ export default function App() {
       </div>
     </>
   );
+  //  }
+}
+
+export function updateStockInfo(info) {
+  stockInfo = info;
 }

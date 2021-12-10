@@ -1,5 +1,5 @@
 .search-body {
-  background-color: #2b7a78;
+  background-color: #2b7a78 !important;
   height: 100vh;
 }
 
@@ -35,10 +35,18 @@ input {
   border-radius: 5px;
   background-color: #17252a;
   color: white;
-  width: 50%;
+  width: 32%;
   height: 15%;
 }
 
 .Stock-Info {
   text-align: left;
+}
+
+.Stock-Card-Header {
+  color: black;
+}
+
+#resultArea {
+  visibility: hidden;
 }

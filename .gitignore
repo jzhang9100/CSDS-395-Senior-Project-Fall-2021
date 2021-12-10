@@ -1,3 +1,5 @@
+.env
+
 # Logs
 logs
 *.log
@@ -6,6 +8,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+.DS*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -119,3 +122,5 @@ dist
 
 # frontend node modules
 frontend/senior-project/node_modules
+
+.env

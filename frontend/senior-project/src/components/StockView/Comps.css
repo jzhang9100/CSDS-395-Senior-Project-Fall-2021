@@ -1,0 +1,28 @@
+.Comps-Area {
+    padding-top: 2rem;
+    color: #def2f1;
+  }
+
+  .Comps-Header{
+    background-color: #17252A !important;
+    color: #def2f1;
+    font-size: 1.5rem;
+    border: none;
+  }
+
+  .Comps-Text{
+    color: #def2f1;
+  }
+
+  .Result-Box {
+    background-color: #def2f1 !important;
+    color: #def2f1;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+  }
+  
+  .Comps-Card-Body{
+    border: none;
+    color: #def2f1;
+  }

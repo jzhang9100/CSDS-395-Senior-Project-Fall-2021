@@ -1,0 +1,36 @@
+.feed-body {
+  background-color: #def2f1;
+  height: 100vh;
+}
+
+.Feed-Area {
+  padding-top: 3rem;
+}
+
+.Feed-Box {
+  background-color: #3aafa9 !important;
+  border-radius: 15px;
+}
+
+.share-button {
+  border: 2px solid #17252a;
+  border-radius: 5px;
+  background-color: #17252a;
+  color: white;
+  width: 20%;
+  height: 15%;
+}
+
+.continue-reading-button {
+  border: 2px solid #17252a;
+  border-radius: 5px;
+  background-color: #17252a;
+  color: white;
+  width: 50%;
+  height: 15%;
+}
+
+.article-img {
+  width: 75%;
+  height: 100%;
+}

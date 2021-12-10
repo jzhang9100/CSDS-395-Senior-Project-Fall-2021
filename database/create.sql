@@ -84,3 +84,10 @@ CREATE TABLE IF NOT EXISTS article_stocks (
 	FOREIGN KEY (article_id) REFERENCES article(article_id),
 	FOREIGN KEY (stock_id) REFERENCES stock(stock_id)
 );
+
+CREATE TABLE IF NOT EXISTS currently_loggedin (
+    user_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
