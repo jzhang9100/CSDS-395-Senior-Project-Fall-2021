@@ -15,6 +15,7 @@ var register = require('./endpoints/register')
 var login = require('./endpoints/login')
 var logout = require('./endpoints/logout')
 var loginToken = require('./endpoints/loginToken')
+var posts = require('./endpoints/post')
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
@@ -25,6 +26,7 @@ app.use('/login', login)
 app.use('/logout', logout)
 app.use('/loginToken', loginToken)
 app.use('/profiles', profiles)
+app.use('/posts', posts)
 app.use('/articles', articles)
 
 app.listen(PORT, () => {
