@@ -53,6 +53,22 @@ router.post('/addStock', (req, res) => {
     });
 });
 
+router.post('/removeStock', (req, res) => {
+    console.log("removing...");
+    connection.query(`SELECT stock_id FROM stock WHERE ticker="${req.query.stock_ticker}"`, (err,rows) => {
+        if(err) throw err;
+        var values = [req.query.user_id, rows[0]["stock_id"]];
+        console.log(values);
+        var sql = `DELETE FROM added_stocks WHERE user_id="${values[0]}" AND stock_id="${values[1]}"`;
+        console.log(sql);
+        connection.query(`DELETE FROM added_stocks WHERE user_id="${values[0]}" AND stock_id="${values[1]}"`, [[values]], (err,rows) => {
+            if(err) throw err;
+            console.log(values);
+            res.sendStatus(200);
+        });
+    });
+});
+
 router.delete('/:uuid', (req, res) => {
 });
 

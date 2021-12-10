@@ -17,19 +17,33 @@ router.get('/:ticker', (req, res) => {
         console.log(rows);
 
         var ret = [];
-        Object.keys(rows).forEach(function(key)) {
+        Object.keys(rows).forEach(function(key) {
             var row = rows[key];
-            console.log(row.article_id)
-            connection.query('SELECT * FROM article WHERE article_id=${row.article_id}', (err2, rows2)) => {
+            console.log(row.article_id);
+            connection.query('SELECT * FROM article WHERE article_id=${row.article_id}', (err2, rows2) => {
                 if(err) throw err;
                 Object.keys(rows2).forEach(function(key2) {
                     ret.push(rows2[key2].link)
-                }
-            }
+                });
+            });
         });
         var articlesJSON = {...ret}
         res.contentType('application/json');
         res.send(articlesJSON);
+    });
+});
+
+//Adds an article to the local database if it does not already exist in the database
+router.post('/add', (req, res) => {
+    var values = [req.query.id, req.query.name, req.query.link];
+    connection.query(`SELECT article_id FROM article WHERE article_id=${req.query.id}`, (err, rows) => {
+        if(err) throw err;
+        if(rows[0] == null) {
+            connection.query(`INSERT INTO article (article_id, name, link) VALUES ?;`, [[values]], (err,rows) => {
+                if(err) throw err;
+                res.sendStatus(200);
+            });
+        }
     });
 });
 

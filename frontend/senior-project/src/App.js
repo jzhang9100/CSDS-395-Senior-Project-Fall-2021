@@ -37,9 +37,20 @@ export default function App() {
   const getNewsData = async () => {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
-      .then((data) => setNewsData(data));
+      .then((data) => {
+        setNewsData(data)
+        console.log(data);
+        data.forEach((article) => {
+          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
+            method: "POST",
+          });
+        })
+      });
     console.log("fetched news Data");
   };
+
+  async function insertNewsData() {
+  }
 
   const token = getToken();
 
