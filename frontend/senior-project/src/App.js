@@ -7,27 +7,28 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+import Thread from "./pages/Thread";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-var stockTicker;
+var stockInfo;
 
 function setToken(token) {
-    var date = new Date();
-    date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
-    document.cookie = `token=${token}; expires=${date};`;
+  var date = new Date();
+  date = new Date(date.setDate(date.getDate() + 1)).toUTCString();
+  document.cookie = `token=${token}; expires=${date};`;
 }
 
 function getToken() {
-    var cookies = document.cookie.split('; ');
-    for(var i = 0; i < cookies.length; i++){
-        if(cookies[i].includes("token=")){
-            return cookies[i].substring(6);
-        }
+  var cookies = document.cookie.split("; ");
+  for (var i = 0; i < cookies.length; i++) {
+    if (cookies[i].includes("token=")) {
+      return cookies[i].substring(6);
     }
-    
-    return null;
+  }
+
+  return null;
 }
 
 export default function App() {
@@ -37,21 +38,31 @@ export default function App() {
   const getNewsData = async () => {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
-      .then((data) => setNewsData(data));
-    console.log("fetched news Data");
+      .then((data) => {
+        setNewsData(data)
+        data.forEach((article) => {
+          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
+            method: "POST",
+          });
+        })
+      });
+    console.log("fetched news data.");
   };
-    
-      const token = getToken();
-    
-      useEffect(() => {
+
+  const token = getToken();
+
+  useEffect(() => {
     getNewsData();
   }, []);
 
-  if(!token) {
-      console.log(token)
-    return <Login setToken={setToken} />
-  } 
-          return (
+  let defaultPage = <Home />;
+
+  if (!token) {
+    console.log(token);
+    defaultPage = <Login setToken={setToken} />;
+  }
+
+  return (
     <>
       <div className="App">
         <Router>
@@ -59,40 +70,41 @@ export default function App() {
           <Container>
             <Switch>
               <Route exact path="/">
-                {/*<Signup />*/}
-                <Home />
+                {defaultPage}
               </Route>
 
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
-              <Route path='/login'>
-                <Login setToken={setToken}/>
-
+              <Route path="/login">
+                <Login setToken={getToken()} />
               </Route>
 
               <Route path="/profile">
-                <Profile />
+                <Profile token={getToken()} />
               </Route>
 
               <Route path="/search">
-                <Search />
+                <Search token={getToken()} />
               </Route>
 
               <Route path="/signup">
                 <Signup />
               </Route>
 
-              <Route path="/stock" render={(props) => <Stock {...props} stockTicker={stockTicker} />} />
+              <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+
+              <Route path="/thread/:articleId">
+                <Thread token={getToken()} />
+              </Route>
             </Switch>
           </Container>
         </Router>
       </div>
     </>
   );
-    //  }
-  
+  //  }
 }
 
-export function updateStockTicker(ticker) {
-  stockTicker = ticker;
+export function updateStockInfo(info) {
+  stockInfo = info;
 }

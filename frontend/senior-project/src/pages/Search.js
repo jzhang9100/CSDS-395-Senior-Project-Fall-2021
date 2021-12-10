@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Search.css";
 import { Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { updateStockTicker } from "../App";
+import { updateStockInfo } from "../App";
 
-export default function Search() {
+export default function Search({ token }) {
   const [searchTerm, setSearchTerm] = useState(""); //the ticker symbol searched for
   const [stockInfo, setStockInfo] = useState("");
   const [stockQuote, setStockQuote] = useState("");
+  const [profileInfo, setProfileInfo] = useState("");
+  const [portfolio, setPortfolio] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -35,10 +37,41 @@ export default function Search() {
       .then((response) => {
         if (response["Note"] == null) {
           setStockInfo(response);
-          updateStockTicker(response["Symbol"]);
+          updateStockInfo(response);
         }
       });
   }
+
+  async function updateProfile() {
+    fetch(`http://localhost:3001/profiles?token=${token}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setProfileInfo(response["user_data"][0]);
+        setPortfolio(response["stock_data"]);
+      });
+  }
+
+  async function addToPortfolio() {
+    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+      method: "POST",
+    })
+      .then(() => {
+        updateProfile();
+      });
+  }
+
+  async function removeFromPortfolio() {
+    fetch(`http://localhost:3001/profiles/removeStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+      method: "POST",
+    })
+      .then(() => {
+        updateProfile();
+      });
+  }
+
+  useEffect(() => {
+    updateProfile();
+  }, []);
 
   return (
     <div className="search-body text-center col-md-12">
@@ -92,11 +125,19 @@ export default function Search() {
                 </tbody>
               </Table>
             </div>
-            <LinkContainer to="/stock">
-              <button type="button" className="button view-stock-button">
-                View Stock
+            <div className="d-flex justify-content-center">
+              <LinkContainer to="/stock">
+                <button type="button" className="button view-stock-button me-2">
+                  View Stock
+                </button>
+              </LinkContainer>
+              <button type="button" className="button view-stock-button me-2 ms-2" onClick={addToPortfolio}>
+                Add
               </button>
-            </LinkContainer>
+              <button type="button" className="button view-stock-button ms-2" onClick={removeFromPortfolio}>
+                Remove
+              </button>
+            </div>
           </Card.Body>
         </Card>
       </div>
