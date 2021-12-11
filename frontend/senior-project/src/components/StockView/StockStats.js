@@ -6,8 +6,8 @@ export function StockStats({stockInfo, stockQuote, dailyData}) {
     console.log('quote', stockQuote)
     console.log('daily', dailyData)
     return (
-        <div className="Stats-Area">
-            <Card className="Result-Box mx-auto w-50">
+        <div className="Stats-Area ms-auto me-3">
+            <Card>
             <Card.Header className="Stock-Stats-Header">Price and Estimates</Card.Header>
             <Card.Body className='Stock-Stats-Card-Body'>
             <div className="Stock-Stats">

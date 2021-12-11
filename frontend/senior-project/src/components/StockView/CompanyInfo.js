@@ -4,8 +4,8 @@ import { Card, Table } from "react-bootstrap";
 
 export function CompanyInfo({stockInfo}) {
     return (
-        <div className="Info-Area">
-            <Card className="Result-Box mx-auto w-50">
+        <div className="Info-Area me-auto ms-3">
+            <Card>
                 <Card.Header className="Company-Info-Header">{stockInfo["Name"]}</Card.Header>
                 <Card.Body className='Company-Info-Card-Body'>
                     <div className="Company-Info">

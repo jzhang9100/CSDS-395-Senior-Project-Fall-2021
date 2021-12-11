@@ -5,8 +5,7 @@
   }
 
   .Stats-Area {
-    padding-top: 5rem;
-    padding-left: 30rem;
+    width: 40%;
     color: #def2f1;
   }
 
@@ -22,8 +21,8 @@
   }
   
   .Stock-Stats-Card-Body{
-    border: none;
-    background-color: #2b7a78 !important;
+    border: 2px solid #2b7a78;
+    background-color: #93dddb !important;
     color: #def2f1;
   }
 
