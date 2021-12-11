@@ -2,7 +2,7 @@ import React from 'react';
 import "./StockGraph.css";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-export function StockGraph(props) {
+export function StockGraph({historicalData}) {
     let state = {
         dataLine: {
           labels: ["Jan 2021", "Feb 2021", "Mar 2021", "Apr 2021", "May 2021", "June 2021", "July 2021", "Aug 2021", "Sept 2021", "Oct 2021"],
@@ -34,7 +34,7 @@ export function StockGraph(props) {
      return(
         <div className="Graph-Area">
             <MDBContainer>
-                <h3 className="Graph-Title">Line chart</h3>
+                <h3 className="Graph-Title">Historical Data</h3>
                 <Line data={state.dataLine} options={{ responsive: true }} />
             </MDBContainer>
         </div>

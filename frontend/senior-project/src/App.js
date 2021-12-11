@@ -12,6 +12,9 @@ import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 var stockInfo;
+var ticker;
+var HistoricalInfo;
+var DailyInfo;
 
 function setToken(token) {
   var date = new Date();
@@ -83,7 +86,7 @@ export default function App() {
                 <Signup />
               </Route>
 
-              <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+              <Route path="/stock" render={(props) => <Stock {...props} ticker={ticker} stockInfo={stockInfo}/>} />
             </Switch>
           </Container>
         </Router>
@@ -95,4 +98,16 @@ export default function App() {
 
 export function updateStockInfo(info) {
   stockInfo = info;
+}
+
+export function updateTicker(info) {
+  ticker = info;
+}
+
+export function updateHistoricalInfo(info) {
+  HistoricalInfo = info;
+}
+
+export function updateDailyInfo(info) {
+  DailyInfo = info;
 }
