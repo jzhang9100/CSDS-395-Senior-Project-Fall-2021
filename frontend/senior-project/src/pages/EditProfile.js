@@ -15,6 +15,7 @@ export default function EditProfile({ token }) {
       .then((response) => response.json())
       .then((response) => {
         console.log(response["user_data"][0]);
+        setProfilePic(response["user_data"][0]["profile_pic"]);
       });
     }
 
@@ -62,11 +63,11 @@ export default function EditProfile({ token }) {
             <div className = 'EditProfile-body'>
                 <div className = 'EditProfile-box'>
                     <h1>Edit Profile Page</h1>
-                    <div className = 'EditProfile-input'>
+                    <div className = 'EditProfile-input text-center'>
 
                         <div className = 'pfp'>
-                            <img src = "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" id = 'pfp-image' alt="default pfp"></img>
-                            <input type = 'text' className = 'form-control' id = 'profilepic' placeholder = 'Profile Picture Link' onChange = {(e) => setProfilePic(e.target.value)}></input>
+                            <img src = {profile_pic} id = 'pfp-image' alt="default pfp"></img>
+                            <input type = 'text' className = 'form-control text-center mt-3' id = 'profilepic' placeholder = 'Profile Picture Link' onChange = {(e) => setProfilePic(e.target.value)}></input>
                         </div>
 
                         <input type = 'text' className = 'form-control' id = 'username' placeholder = 'Username' onChange = {(e) => setUsername(e.target.value)}></input>
