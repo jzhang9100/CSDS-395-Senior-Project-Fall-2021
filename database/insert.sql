@@ -22,24 +22,13 @@ INSERT INTO security (user_id, password, salt) VALUES ((SELECT user_id FROM user
 INSERT INTO article (name, link) VALUES ('Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement','https://www.cnbc.com/2021/09/22/facebook-chief-technology-officer-to-step-down.html');
 INSERT INTO article (name, link) VALUES ('Discord CEO on social audio app’s next big spends after recent $500 million funding','https://www.cnbc.com/2021/09/22/discord-doubles-valuation-to-15-billion-in-new-funding-round.html');
 
-#Post
-INSERT INTO post (user_id, article_id) VALUES ((SELECT user_id FROM user WHERE username = 'test_user1'),(SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement'));
-INSERT INTO post (user_id, article_id) VALUES ((SELECT user_id FROM user WHERE username = 'test_user1'),(SELECT article_id from article WHERE name = 'Discord CEO on social audio app’s next big spends after recent $500 million funding'));
-INSERT INTO post (user_id, article_id) VALUES ((SELECT user_id FROM user WHERE username = 'test_user2'),(SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement'));
-
-#Likes
-INSERT INTO likes (post_id, user_id) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user1') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user2'));
-INSERT INTO likes (post_id, user_id) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user1') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user3'));
-INSERT INTO likes (post_id, user_id) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user2') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user1'));
-INSERT INTO likes (post_id, user_id) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user2') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user3'));
-
 #Stock
 INSERT INTO stock (name, ticker, exchange) VALUES ('Facebook','FB','NASDAQ');
 INSERT INTO stock (name, ticker, exchange) VALUES ('Ford','FORD','NASDAQ');
 
 #Comments
-INSERT INTO comments (post_id, user_id, comment) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user1') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user2'),'test comment 1 from user 2');
-INSERT INTO comments (post_id, user_id, comment) VALUES ((SELECT post_id FROM post WHERE user_id = (SELECT user_id FROM user WHERE username = 'test_user1') AND article_id = (SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement')),(SELECT user_id FROM user WHERE username = 'test_user3'),'test comment 2 from user 3');
+INSERT INTO comments (article_id, user_id, comment) VALUES ((SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement'),(SELECT user_id FROM user WHERE username = 'test_user2'),'test comment 1 from user 2');
+INSERT INTO comments (article_id, user_id, comment) VALUES ((SELECT article_id from article WHERE name = 'Facebook chief technology officer to step down, Zuckerberg appoints hardware boss as replacement'),(SELECT user_id FROM user WHERE username = 'test_user3'),'test comment 2 from user 3');
 
 #Follower
 INSERT INTO follower (user_id, followed_user_id) VALUES ((SELECT user_id FROM user WHERE username = 'test_user1'),(SELECT user_id FROM user WHERE username = 'test_user2'));

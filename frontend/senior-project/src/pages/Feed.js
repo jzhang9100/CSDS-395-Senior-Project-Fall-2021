@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Feed.css";
-import { Card } from "react-bootstrap";
+import { Card, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function Feed({ newsData }) {
   // components of elements in newsData include:
@@ -13,6 +14,7 @@ export default function Feed({ newsData }) {
         {/* Articles */}
         <div id="articles-area">
           {newsData.map((article) => {
+            var url = "/thread/" + article.id;
             return (
               <Card className="Feed-Box mt-3 mx-auto w-50" key={article.id}>
                 <Card.Header className="d-flex">
@@ -27,9 +29,14 @@ export default function Feed({ newsData }) {
                     <p>{article.summary}</p>
                   </div>
                   <img className="article-img" src={article.image} alt="Article Photograph" />
-                  <a className="button continue-reading-button mt-3" href={article.url} type="button" target=" blank">
+                  <a className="button continue-reading-button mt-3 mb-1 w-50" href={article.url} type="button" target=" blank">
                     Continue Reading
                   </a>
+                  <LinkContainer to={url}>
+                    <Nav.Link>
+                      <a className="button continue-reading-button mt-1 mb-1" href="#" type="button" target=" blank">View Thread</a>
+                    </Nav.Link>
+                  </LinkContainer>
                 </Card.Body>
               </Card>
             );
