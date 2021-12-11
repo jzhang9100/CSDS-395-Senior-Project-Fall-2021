@@ -69,3 +69,13 @@
   font-size: 1rem;
   margin-top: 1rem;
 }
+
+.edit-profile-button {
+  border-radius: 10px;
+  background-color: black;
+}
+
+.edit-profile-text {
+  margin: 0 1rem;
+  color: white;
+}

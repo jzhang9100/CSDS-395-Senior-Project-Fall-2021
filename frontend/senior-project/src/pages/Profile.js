@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Card, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import "../styles/Profile.css";
 
 export default function Profile({ token }) {
@@ -42,6 +44,11 @@ export default function Profile({ token }) {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat at beatae ut, quos cupiditate repudiandae distinctio
             officia sequi autem. Odit, itaque eveniet. Modi, sint debitis!
           </p>
+          <LinkContainer to="/editprofile">
+            <Nav.Link className = "edit-profile-button">
+              <p className = "edit-profile-text">Edit Profile</p>
+            </Nav.Link>
+          </LinkContainer>
         </div>
       </div>
       <h3 className="text-center mb-0 mt-2">Portfolio</h3>

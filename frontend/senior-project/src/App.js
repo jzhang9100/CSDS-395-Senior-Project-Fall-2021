@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
+import EditProfile from "./pages/EditProfile";
 import Thread from "./pages/Thread";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -98,6 +99,11 @@ export default function App() {
               <Route path="/thread/:articleId">
                 <Thread token={getToken()} />
               </Route>
+
+              <Route path="/editprofile">
+                <EditProfile token = {getToken()} />
+              </Route>
+              
             </Switch>
           </Container>
         </Router>
