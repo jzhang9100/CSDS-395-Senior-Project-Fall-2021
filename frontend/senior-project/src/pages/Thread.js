@@ -34,7 +34,7 @@ export default function Thread({ props, token }) {
     fetch(`http://localhost:3001/posts/addComment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "newComment": newComment, "article_id": article_id, "user_id": profileInfo.user_id }),
+      body: JSON.stringify({ newComment: newComment, article_id: article_id, user_id: profileInfo.user_id }),
     }).then(() => {
       console.log("yo");
       window.location.reload();
@@ -75,8 +75,11 @@ export default function Thread({ props, token }) {
               <Card.Body className="comment-card-body d-flex p-0 m-0">
                 <div className="h-100 w-100 my-auto me-auto">
                   <div className="d-flex">
-                    <h6 className="ms-3 mt-2 mb-2 me-auto">{comment.username}</h6>
-                    <h6 className="me-3 mt-2 mb-2 ms-auto">{convert(easternTime)}</h6>
+                    <div className="d-flex ms-3 mt-2 mb-2 me-auto">
+                      <img class="prof-pic-thread" src={comment.profile_pic} alt="pfp" />
+                      <h6 className="ms-2 mt-3">{comment.username}</h6>
+                    </div>
+                    <h6 className="me-3 mt-4 mb-2 ms-auto">{convert(easternTime)}</h6>
                   </div>
                   <hr className="my-0" />
                   <p className="mt-2">{comment.comment}</p>

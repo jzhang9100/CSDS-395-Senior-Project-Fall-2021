@@ -14,7 +14,7 @@ router.use(function timeLog (req, res, next) {
 //gets current comments for an article along with user information
 router.get('/get', (req, res) => {
     console.log(req.query.id);
-    connection.query(`SELECT comments.comment_id, comments.comment, comments.create_date, user.username FROM comments, user WHERE article_id="${req.query.id}" AND comments.user_id=user.user_id ORDER BY comments.create_date;`, (err,comments) => {
+    connection.query(`SELECT comments.comment_id, comments.comment, comments.create_date, user.username, user.profile_pic FROM comments, user WHERE article_id="${req.query.id}" AND comments.user_id=user.user_id ORDER BY comments.create_date;`, (err,comments) => {
         if(err) throw err;
         console.log(comments);
         var commentsJSON = JSON.stringify({"comments" : comments});

@@ -18,8 +18,15 @@
   width: 47%;
 }
 
-.comment-card-body{
-  background-color: #3aafa9 !important;
+.comment-card-body {
+  background-color: #55c0bb !important;
   border-radius: 15px;
   border: 4px solid #2b7a78;
+}
+
+.prof-pic-thread {
+  border-radius: 50%;
+  border: 2px solid #2b7a78;
+  width: 50px;
+  height: 50px;
 }

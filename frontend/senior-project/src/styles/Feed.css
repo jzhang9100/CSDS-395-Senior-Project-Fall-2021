@@ -10,6 +10,7 @@
 .Feed-Box {
   background-color: #3aafa9 !important;
   border-radius: 15px;
+  border: 4px solid #2b7a78 !important;
 }
 
 .share-button {
@@ -26,11 +27,13 @@
   border-radius: 5px;
   background-color: #17252a;
   color: white;
-  width: 50%;
-  height: 10%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .article-img {
   width: 75%;
   height: 100%;
+  border: 4px solid #2b7a78;
 }
