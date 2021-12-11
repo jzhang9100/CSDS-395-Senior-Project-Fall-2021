@@ -39,12 +39,14 @@ export default function App() {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
       .then((data) => {
-        setNewsData(data)
+        setNewsData(data);
         data.forEach((article) => {
-          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
+          fetch(`http://localhost:3001/articles/add`, {
             method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ article_id: article.id, name: article.headline, link: article.url }),
           });
-        })
+        });
       });
     console.log("fetched news data.");
   };
@@ -76,7 +78,7 @@ export default function App() {
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path="/login">
-                <Login setToken={getToken()} />
+                <Login setToken={setToken} />
               </Route>
 
               <Route path="/profile">
