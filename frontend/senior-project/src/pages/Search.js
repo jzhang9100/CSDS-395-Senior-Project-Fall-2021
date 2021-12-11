@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Search.css";
 import { Card, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { updateStockInfo } from "../App";
+import { updateStockInfo, updateTicker } from "../App";
 
 export default function Search({ token }) {
   const [searchTerm, setSearchTerm] = useState(""); //the ticker symbol searched for
@@ -23,6 +23,7 @@ export default function Search({ token }) {
     var ticker = searchTerm.toUpperCase();
     let stockInfoAPI = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&outputsize=compact&apikey=${apiKey}`;
     let currentPriceAPI = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubAPI}`;
+    updateTicker(ticker)
 
     fetch(currentPriceAPI)
       .then((response) => response.json())

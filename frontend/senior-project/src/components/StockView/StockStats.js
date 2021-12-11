@@ -2,7 +2,9 @@ import React from 'react';
 import "./StockStats.css";
 import { Card, Table } from "react-bootstrap";
 
-export function StockStats(props) {
+export function StockStats({stockInfo, stockQuote, dailyData}) {
+    console.log('quote', stockQuote)
+    console.log('daily', dailyData)
     return (
         <div className="Stats-Area">
             <Card className="Result-Box mx-auto w-50">
@@ -14,27 +16,28 @@ export function StockStats(props) {
                         <tbody text="white">
                         <tr> 
                             <td>Current Price</td>
-                            <td>$100</td>
+                            <td>${stockQuote['c']}</td>
+                            
                         </tr>
                         <tr>
                             <td>Open</td>
-                            <td>$100</td>
+                            <td>${dailyData['Time Series (Daily)']['2021-12-10']['1. open']}</td>
                         </tr>
                         <tr>
                             <td>Close</td>
-                            <td>$100</td>
+                            <td>${dailyData['Time Series (Daily)']['2021-12-10']['4. close']}</td>
                         </tr>
                         <tr>
                             <td>52 Week High</td>
-                            <td>$100</td>
+                            <td>${stockInfo["52WeekHigh"]}</td>
                         </tr>
                         <tr>
                             <td>52 Week Low</td>
-                            <td>$100</td>
+                            <td>${stockInfo["52WeekLow"]}</td>
                         </tr>
                         <tr>
                             <td>P/E Ratio</td>
-                            <td>xx.xx</td>
+                            <td>{stockInfo["PERatio"]}</td>
                         </tr>
                         </tbody>
                     </Table>

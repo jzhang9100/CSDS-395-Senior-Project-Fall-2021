@@ -7,7 +7,6 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import Stock from "./pages/Stock";
-import EditProfile from "./pages/EditProfile";
 import Thread from "./pages/Thread";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -43,14 +42,12 @@ export default function App() {
     await fetch(`https://finnhub.io/api/v1/news?category=general&token=${finnhubApiKey}`)
       .then((Response) => Response.json())
       .then((data) => {
-        setNewsData(data);
+        setNewsData(data)
         data.forEach((article) => {
-          fetch(`http://localhost:3001/articles/add`, {
+          fetch(`http://localhost:3001/articles/add?id=${article.id}&name=${article.headline}&link=${article.url}`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ article_id: article.id, name: article.headline, link: article.url }),
           });
-        });
+        })
       });
     console.log("fetched news data.");
   };
@@ -82,7 +79,7 @@ export default function App() {
               <Route path="/feed" render={(props) => <Feed {...props} newsData={newsData} setNewsData={setNewsData} />} />
 
               <Route path="/login">
-                <Login setToken={setToken} />
+                <Login setToken={getToken()} />
               </Route>
 
               <Route path="/profile">
@@ -97,16 +94,15 @@ export default function App() {
                 <Signup />
               </Route>
 
+<<<<<<< HEAD
+              <Route path="/stock" render={(props) => <Stock {...props} ticker={ticker} stockInfo={stockInfo}/>} />
+=======
               <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
 
               <Route path="/thread/:articleId">
                 <Thread token={getToken()} />
               </Route>
-
-              <Route path="/editprofile">
-                <EditProfile token = {getToken()} />
-              </Route>
-              
+>>>>>>> 7e2e5668860e9c39b257a89337299285ea54a74c
             </Switch>
           </Container>
         </Router>

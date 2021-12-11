@@ -5,3 +5,8 @@
     color: white;
     font-size: 30px;
   }
+
+  .flexbox-container {
+    display: flex;
+    flex-direction: row;
+}
