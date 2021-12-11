@@ -97,7 +97,7 @@ export default function App() {
                 <Signup />
               </Route>
 
-              <Route path="/stock" render={(props) => <Stock {...props} stockInfo={stockInfo} />} />
+              <Route path="/stock" render={(props) => <Stock {...props} ticker={ticker} stockInfo={stockInfo} />} />
 
               <Route path="/thread/:articleId">
                 <Thread token={getToken()} />

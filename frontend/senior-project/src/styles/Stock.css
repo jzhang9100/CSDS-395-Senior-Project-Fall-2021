@@ -1,0 +1,11 @@
+.stock-body {
+    background-color: #9ce7e5 !important;
+    height: 100vh;
+    border: 2px solid #2b7a78;
+}
+
+.stock-container {
+    background-color: #caf5f3 !important;
+    height: 100vh;
+    border: 2px solid #2b7a78;
+}
