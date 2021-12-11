@@ -1,6 +1,9 @@
 var express = require('express')
 var connection = require('../database/db')
+var bodyParser = require("body-parser");
 var router = express.Router()
+
+router.use(bodyParser.json());
 
 // Middleware
 router.use(function timeLog (req, res, next) {
@@ -43,28 +46,29 @@ router.post('/', (req, res) => {
 });
 
 router.post('/addStock', (req, res) => {
-    connection.query(`SELECT stock_id FROM stock WHERE ticker="${req.query.stock_ticker}"`, (err,rows) => {
+    console.log("adding stock...");
+    connection.query(`SELECT stock_id FROM stock WHERE ticker="${req.body.stock_ticker}"`, (err,rows) => {
         if(err) throw err;
-        var values = [req.query.user_id, rows[0]["stock_id"]];
+        var values = [req.body.user_id, rows[0]["stock_id"]];
         connection.query(`INSERT INTO added_stocks (user_id, stock_id) VALUES ?;`, [[values]], (err,rows) => {
             if(err) throw err;
-            res.sendStatus(200);
+            return res.sendStatus(200);
         });
     });
 });
 
 router.post('/removeStock', (req, res) => {
-    console.log("removing...");
-    connection.query(`SELECT stock_id FROM stock WHERE ticker="${req.query.stock_ticker}"`, (err,rows) => {
+    console.log("removing stock...");
+    connection.query(`SELECT stock_id FROM stock WHERE ticker="${req.body.stock_ticker}"`, (err,rows) => {
         if(err) throw err;
-        var values = [req.query.user_id, rows[0]["stock_id"]];
+        var values = [req.body.user_id, rows[0]["stock_id"]];
         console.log(values);
         var sql = `DELETE FROM added_stocks WHERE user_id="${values[0]}" AND stock_id="${values[1]}"`;
         console.log(sql);
         connection.query(`DELETE FROM added_stocks WHERE user_id="${values[0]}" AND stock_id="${values[1]}"`, [[values]], (err,rows) => {
             if(err) throw err;
             console.log(values);
-            res.sendStatus(200);
+            return res.sendStatus(200);
         });
     });
 });
