@@ -52,8 +52,8 @@ router.get('/:ticker', (req, res) => {
 
 //Adds an article to the local database if it does not already exist in the database
 router.post('/add', (req, res) => {
-    var values = [req.query.article_id, req.query.name, req.query.link];
-    connection.query(`SELECT article_id FROM article WHERE article_id=${req.query.article_id}`, (err, rows) => {
+    var values = [req.body.article_id, req.body.name, req.body.link];
+    connection.query(`SELECT article_id FROM article WHERE article_id=${req.body.article_id}`, (err, rows) => {
         if(err) throw err;
         if(rows[0] == null) {
             connection.query(`INSERT INTO article (article_id, name, link) VALUES ?;`, [[values]], (err,rows) => {

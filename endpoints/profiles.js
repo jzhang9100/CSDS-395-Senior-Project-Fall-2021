@@ -30,7 +30,8 @@ router.get('/', (req, res) => {
  * Expected  input is a JSON to replace whats in the DB
  */
 router.put('/', (req, res) => {
-    connection.query(`UPDATE user SET fname="${req.body.fname}", lname="${req.body.lname}", username="${req.body.username}", bio="${req.body.bio}", profile_pic="${req.body.profile_pic}" WHERE user_id=(SELECT user_id FROM currently_loggedin WHERE token="${req.query.token}");`, (err,rows) => {
+    console.log("profiles PUT attempted")
+    connection.query(`UPDATE user SET fname="${req.body.fname}", lname="${req.body.lname}", username="${req.body.username}", bio="${req.body.bio}", profile_pic="${req.body.profile_pic}" WHERE user_id=(SELECT user_id FROM currently_loggedin WHERE token="${req.body.token}");`, (err,rows) => {
         if(err) throw err;
         res.sendStatus(200);
     });

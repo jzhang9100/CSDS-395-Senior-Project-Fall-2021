@@ -101,8 +101,9 @@ export default function App() {
               </Route>
 
               <Route path="/editprofile">
-                <EditProfile />
+                <EditProfile token = {getToken()} />
               </Route>
+              
             </Switch>
           </Container>
         </Router>
