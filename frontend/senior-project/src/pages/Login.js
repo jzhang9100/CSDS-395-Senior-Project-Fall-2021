@@ -36,19 +36,19 @@ export default function Login({ setToken }) {
         <div className="input-box">
           <input
             type="text"
-            className="login-button"
+            className="login-button shadow"
             id="username"
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="password"
-            className="login-button"
+            className="login-button shadow"
             id="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button id="submit-button" onClick={handleSubmit}>
+          <button id="submit-button" onClick={handleSubmit} className="shadow">
             Log In
           </button>
           <div>
