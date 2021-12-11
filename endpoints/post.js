@@ -24,9 +24,9 @@ router.get('/get', (req, res) => {
 });
 
 router.post('/addComment', (req, res) => {
-    var values = [req.body.article_id, req.body.user_id, req.body.newComment];
+    var values = [req.body.article_id, req.body.user_id, req.body.newComment, new Date().toISOString().slice(0, 19).replace('T', ' ')];
     console.log(values);
-    connection.query(`INSERT INTO comments (article_id, user_id, comment) VALUES ?;`, [[values]], (err) => {
+    connection.query(`INSERT INTO comments (article_id, user_id, comment, create_date) VALUES ?;`, [[values]], (err) => {
         if(err) throw err;
         return res.sendStatus(200);
     });
