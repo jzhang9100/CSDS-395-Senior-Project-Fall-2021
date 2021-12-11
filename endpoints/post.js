@@ -14,7 +14,7 @@ router.use(function timeLog (req, res, next) {
 //gets current comments for an article along with user information
 router.get('/get', (req, res) => {
     console.log(req.query.id);
-    connection.query(`SELECT * FROM comments, user WHERE article_id="${req.query.id}" AND comments.user_id=user.user_id ORDER BY comments.create_date;`, (err,comments) => {
+    connection.query(`SELECT comments.comment_id, comments.comment, comments.create_date, user.username FROM comments, user WHERE article_id="${req.query.id}" AND comments.user_id=user.user_id ORDER BY comments.create_date;`, (err,comments) => {
         if(err) throw err;
         console.log(comments);
         var commentsJSON = JSON.stringify({"comments" : comments});
@@ -24,9 +24,9 @@ router.get('/get', (req, res) => {
 });
 
 router.post('/addComment', (req, res) => {
-    var values = [req.body.article_id, req.body.user_id, req.body.newComment, new Date().toISOString().slice(0, 19).replace('T', ' ')];
+    var values = [req.body.article_id, req.body.user_id, req.body.newComment];
     console.log(values);
-    connection.query(`INSERT INTO comments (article_id, user_id, comment, create_date) VALUES ?;`, [[values]], (err) => {
+    connection.query(`INSERT INTO comments (article_id, user_id, comment) VALUES ?;`, [[values]], (err) => {
         if(err) throw err;
         return res.sendStatus(200);
     });
