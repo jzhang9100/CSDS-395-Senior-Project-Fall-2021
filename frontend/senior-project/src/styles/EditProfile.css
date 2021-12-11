@@ -1,0 +1,60 @@
+
+.EditProfile-body{
+    background-color: #3AAFA9;
+    height: 100vh;
+    border-radius: 1rem;
+}
+
+.EditProfile-box{
+height: 35%;
+width: 45%;
+/* padding-left: 1rem; */
+/* margin-left:1rem; */
+margin: auto;
+padding-top: 5rem;
+}
+
+/* em is font size of nearest parent, fem*/
+
+.EditProfile-input{
+    background-color: #def2F1;
+    height: 300%;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    /*watch a video on flexbox*/
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.form-control{
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    width: 85%;
+}
+
+.button{
+    height: 3rem;
+    background: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.pfp {
+    display: flexbox;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pfp-button {
+    height: 2rem;
+}
+
+#pfp-image {
+    width: 40%;
+    border-radius: 50%;
+}

@@ -1,6 +1,9 @@
 var express = require('express')
 var connection = require('../database/db')
+var bodyParser = require("body-parser");
 var router = express.Router()
+
+router.use(bodyParser.json());
 
 // Middleware
 router.use(function timeLog (req, res, next) {
@@ -49,15 +52,16 @@ router.get('/:ticker', (req, res) => {
 
 //Adds an article to the local database if it does not already exist in the database
 router.post('/add', (req, res) => {
-    var values = [req.query.id, req.query.name, req.query.link];
-    connection.query(`SELECT article_id FROM article WHERE article_id=${req.query.id}`, (err, rows) => {
+    var values = [req.body.article_id, req.body.name, req.body.link];
+    connection.query(`SELECT article_id FROM article WHERE article_id=${req.body.article_id}`, (err, rows) => {
         if(err) throw err;
         if(rows[0] == null) {
             connection.query(`INSERT INTO article (article_id, name, link) VALUES ?;`, [[values]], (err,rows) => {
                 if(err) throw err;
-                res.sendStatus(200);
+                return res.sendStatus(200);
             });
         }
+        return res.sendStatus(200);
     });
 });
 

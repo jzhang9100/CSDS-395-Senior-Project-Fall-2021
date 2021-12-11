@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { Card, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import "../styles/Profile.css";
 
 export default function Profile({ token }) {
   const [portfolio, setPortfolio] = useState([]);
+  const [profileInfo, setProfileInfo] = useState([]);
 
   function updateProfile() {
     fetch(`http://localhost:3001/profiles?token=${token}`)
       .then((response) => response.json())
       .then((response) => {
         console.log(response["user_data"][0]);
+        setProfileInfo(response["user_data"][0]);
         document.querySelector(".username").innerHTML = response["user_data"][0].username;
         document.querySelector(".bio").innerHTML = response["user_data"][0].bio;
       });
@@ -32,8 +36,8 @@ export default function Profile({ token }) {
     <div className="body">
       <div className="profile-box">
         <img
-          src="https://static8.depositphotos.com/1377527/930/i/600/depositphotos_9305418-stock-photo-middle-aged-businessman.jpg"
-          alt=""
+          src={profileInfo.profile_pic}
+          alt="User Profile"
           className="profile-picture"
         />
         <div className="user-info">
@@ -42,13 +46,18 @@ export default function Profile({ token }) {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat at beatae ut, quos cupiditate repudiandae distinctio
             officia sequi autem. Odit, itaque eveniet. Modi, sint debitis!
           </p>
+          <LinkContainer to="/editprofile">
+            <Nav.Link className = "edit-profile-button">
+              <p className = "edit-profile-text">Edit Profile</p>
+            </Nav.Link>
+          </LinkContainer>
         </div>
       </div>
       <h3 className="text-center mb-0 mt-2">Portfolio</h3>
-      <div className="holdings">
+      <div className="holdings d-flex">
         {portfolio.map((stock) => {
           return (
-            <div className="stock" key={stock.ticker}>
+            <div className="stock mx-2" key={stock.ticker}>
               <div className="stock-info">
                 {" "}
                 <h2>{stock.ticker}</h2>
@@ -65,10 +74,10 @@ export default function Profile({ token }) {
           );
         })}
       </div>
-      <div className="updates">
+      {/* <div className="updates">
         <h3 className="w-100">Recent Updates</h3>
         <h4>Date: [Username] purchased xxx shares of XXX</h4>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -53,8 +53,10 @@ export default function Search({ token }) {
   }
 
   async function addToPortfolio() {
-    fetch(`http://localhost:3001/profiles/addStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+    fetch(`http://localhost:3001/profiles/addStock`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ "user_id": profileInfo.user_id, "stock_ticker": stockInfo["Symbol"] })
     })
       .then(() => {
         updateProfile();
@@ -62,8 +64,10 @@ export default function Search({ token }) {
   }
 
   async function removeFromPortfolio() {
-    fetch(`http://localhost:3001/profiles/removeStock?user_id=${profileInfo.user_id}&stock_ticker=${stockInfo["Symbol"]}`, {
+    fetch(`http://localhost:3001/profiles/removeStock`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ "user_id": profileInfo.user_id, "stock_ticker": stockInfo["Symbol"] })
     })
       .then(() => {
         updateProfile();
