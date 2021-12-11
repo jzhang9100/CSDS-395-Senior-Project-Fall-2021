@@ -23,19 +23,19 @@ export default function Feed({ newsData }) {
                   </div>
                   <button className="share-button">Share</button>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="w-100">
                   <div>
                     <h4>{article.headline}</h4>
                     <p>{article.summary}</p>
                   </div>
                   <img className="article-img" src={article.image} alt="Article Photograph" />
-                  <div className="d-flex">
-                    <a className="button continue-reading-button mt-3 mb-1 w-50" href={article.url} type="button" target=" blank">
+                  <div className="d-flex me-0 ms-0">
+                    <a className="button continue-reading-button w-50 me-2 ms-0 pt-2" href={article.url} type="button" target=" blank">
                       Continue Reading
                     </a>
-                    <LinkContainer to={url} className="w-50">
+                    <LinkContainer to={url} className="button continue-reading-button w-50 me-0 ms-2">
                       <Nav.Link>
-                        <a className="button continue-reading-button mt-1 mb-1" href="#" type="button" target=" blank">
+                        <a className="continue-reading-button w-100" type="button h-50" target=" blank">
                           View Thread
                         </a>
                       </Nav.Link>
