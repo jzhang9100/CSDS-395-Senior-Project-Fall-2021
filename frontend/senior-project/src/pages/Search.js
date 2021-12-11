@@ -23,7 +23,7 @@ export default function Search({ token }) {
     var ticker = searchTerm.toUpperCase();
     let stockInfoAPI = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&outputsize=compact&apikey=${apiKey}`;
     let currentPriceAPI = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubAPI}`;
-    updateTicker(ticker)
+    updateTicker(ticker);
 
     fetch(currentPriceAPI)
       .then((response) => response.json())
@@ -56,22 +56,20 @@ export default function Search({ token }) {
     fetch(`http://localhost:3001/profiles/addStock`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "user_id": profileInfo.user_id, "stock_ticker": stockInfo["Symbol"] })
-    })
-      .then(() => {
-        updateProfile();
-      });
+      body: JSON.stringify({ user_id: profileInfo.user_id, stock_ticker: stockInfo["Symbol"] }),
+    }).then(() => {
+      updateProfile();
+    });
   }
 
   async function removeFromPortfolio() {
     fetch(`http://localhost:3001/profiles/removeStock`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "user_id": profileInfo.user_id, "stock_ticker": stockInfo["Symbol"] })
-    })
-      .then(() => {
-        updateProfile();
-      });
+      body: JSON.stringify({ user_id: profileInfo.user_id, stock_ticker: stockInfo["Symbol"] }),
+    }).then(() => {
+      updateProfile();
+    });
   }
 
   useEffect(() => {
@@ -84,6 +82,7 @@ export default function Search({ token }) {
         <h1>Search Stock</h1>
         <form onSubmit={handleSubmit}>
           <input
+            className="shadow"
             type="text"
             placeholder="Enter Stock Symbol..."
             value={searchTerm}
@@ -91,7 +90,7 @@ export default function Search({ token }) {
               setSearchTerm(event.target.value);
             }}
           />
-          <input type="submit" className="search-button ms-4" />
+          <input type="submit" className="search-button ms-4 shadow" />
         </form>
       </div>
 
@@ -132,14 +131,14 @@ export default function Search({ token }) {
             </div>
             <div className="d-flex justify-content-center">
               <LinkContainer to="/stock">
-                <button type="button" className="button view-stock-button me-2">
+                <button type="button" className="button view-stock-button me-2 shadow">
                   View Stock
                 </button>
               </LinkContainer>
-              <button type="button" className="button view-stock-button me-2 ms-2" onClick={addToPortfolio}>
+              <button type="button" className="button view-stock-button me-2 ms-2 shadow" onClick={addToPortfolio}>
                 Add
               </button>
-              <button type="button" className="button view-stock-button ms-2" onClick={removeFromPortfolio}>
+              <button type="button" className="button view-stock-button ms-2 shadow" onClick={removeFromPortfolio}>
                 Remove
               </button>
             </div>

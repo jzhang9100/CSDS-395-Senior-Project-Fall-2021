@@ -61,7 +61,7 @@ export default function Thread({ props, token }) {
         <h1>Thread</h1>
         <hr />
         <h3>{articleInfo.name}</h3>
-        <a className="button read-article-button mt-3 mb-1 w-50" href={articleInfo.link} type="button" target=" blank">
+        <a className="button read-article-button mt-3 mb-1 pt-2 pb-2 w-50 shadow" href={articleInfo.link} type="button" target=" blank">
           Read Article
         </a>
         <hr />
@@ -103,7 +103,7 @@ export default function Thread({ props, token }) {
               }}
             />
           </Form.Group>
-          <Button id="new-comment-submit" type="submit" className="w-50">
+          <Button id="new-comment-submit" type="submit" className="w-50 mb-4 pt-2 pb-2 shadow">
             Submit
           </Button>
         </Form>

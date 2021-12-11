@@ -60,26 +60,26 @@ class Signup extends React.Component {
           <div className="Special-Box">
             <input
               type="text"
-              className="signup-button"
+              className="signup-button mt-4 shadow"
               id="username"
               placeholder="Create Username"
               onChange={this.onUsernameChange}
             />
             <input
               type="password"
-              className="signup-button"
+              className="signup-button mt-4 shadow"
               id="pw"
               placeholder="Enter Password"
               onChange={this.onPasswordChange}
             />
             <input
               type="password"
-              className="signup-button"
+              className="signup-button mt-4 mb-4 shadow"
               id="pw2"
               placeholder="Re-enter Password"
               onChange={this.onMatchingPasswordChange}
             />
-            <button id="button" onClick={this.handleSubmit}>
+            <button id="button" onClick={this.handleSubmit} className="shadow">
               Sign Up
             </button>
             <div id="matchingPasswords">{this.state.matching}</div>

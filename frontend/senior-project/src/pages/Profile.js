@@ -38,7 +38,7 @@ export default function Profile({ token }) {
         <img
           src={profileInfo.profile_pic}
           alt="User Profile"
-          className="profile-picture"
+          className="profile-picture shadow"
         />
         <div className="user-info">
           <h2 className="username">Username</h2>
@@ -47,7 +47,7 @@ export default function Profile({ token }) {
             officia sequi autem. Odit, itaque eveniet. Modi, sint debitis!
           </p>
           <LinkContainer to="/editprofile">
-            <Nav.Link className = "edit-profile-button">
+            <Nav.Link className = "edit-profile-button shadow">
               <p className = "edit-profile-text">Edit Profile</p>
             </Nav.Link>
           </LinkContainer>
@@ -57,7 +57,7 @@ export default function Profile({ token }) {
       <div className="holdings d-flex">
         {portfolio.map((stock) => {
           return (
-            <div className="stock mx-2" key={stock.ticker}>
+            <div className="stock mx-2 shadow" key={stock.ticker}>
               <div className="stock-info">
                 {" "}
                 <h2>{stock.ticker}</h2>

@@ -21,7 +21,7 @@ export default function Feed({ newsData }) {
                   <div className="me-auto">
                     <p>{convert(article.datetime)}</p>
                   </div>
-                  <button className="share-button">Share</button>
+                  <button className="share-button shadow">Share</button>
                 </Card.Header>
                 <Card.Body className="w-100">
                   <div>
@@ -30,10 +30,10 @@ export default function Feed({ newsData }) {
                   </div>
                   <img className="article-img" src={article.image} alt="Article Photograph" />
                   <div className="d-flex me-0 ms-0">
-                    <a className="button continue-reading-button w-50 me-2 ms-0 pt-2" href={article.url} type="button" target=" blank">
+                    <a className="button continue-reading-button w-50 me-2 ms-0 pt-2 shadow" href={article.url} type="button" target=" blank">
                       Continue Reading
                     </a>
-                    <LinkContainer to={url} className="button continue-reading-button w-50 me-0 ms-2">
+                    <LinkContainer to={url} className="button continue-reading-button w-50 me-0 ms-2 shadow">
                       <Nav.Link>
                         <a className="continue-reading-button w-100" type="button h-50" target=" blank">
                           View Thread
