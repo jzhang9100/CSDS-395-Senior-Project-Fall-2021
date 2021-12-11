@@ -45,10 +45,10 @@ export default function Profile({ token }) {
         </div>
       </div>
       <h3 className="text-center mb-0 mt-2">Portfolio</h3>
-      <div className="holdings">
+      <div className="holdings d-flex">
         {portfolio.map((stock) => {
           return (
-            <div className="stock" key={stock.ticker}>
+            <div className="stock mx-2" key={stock.ticker}>
               <div className="stock-info">
                 {" "}
                 <h2>{stock.ticker}</h2>
@@ -65,10 +65,10 @@ export default function Profile({ token }) {
           );
         })}
       </div>
-      <div className="updates">
+      {/* <div className="updates">
         <h3 className="w-100">Recent Updates</h3>
         <h4>Date: [Username] purchased xxx shares of XXX</h4>
-      </div>
+      </div> */}
     </div>
   );
 }

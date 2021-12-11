@@ -6,3 +6,20 @@
   width: 25%;
   height: 15%;
 }
+
+#new-comment-submit {
+  border: 2px solid #17252a;
+  border-radius: 5px;
+  background-color: #17252a;
+  color: white;
+}
+
+.comment-card {
+  width: 47%;
+}
+
+.comment-card-body{
+  background-color: #3aafa9 !important;
+  border-radius: 15px;
+  border: 4px solid #2b7a78;
+}
