@@ -5,12 +5,14 @@ import "../styles/Profile.css";
 
 export default function Profile({ token }) {
   const [portfolio, setPortfolio] = useState([]);
+  const [profileInfo, setProfileInfo] = useState([]);
 
   function updateProfile() {
     fetch(`http://localhost:3001/profiles?token=${token}`)
       .then((response) => response.json())
       .then((response) => {
         console.log(response["user_data"][0]);
+        setProfileInfo(response["user_data"][0]);
         document.querySelector(".username").innerHTML = response["user_data"][0].username;
         document.querySelector(".bio").innerHTML = response["user_data"][0].bio;
       });
@@ -34,8 +36,8 @@ export default function Profile({ token }) {
     <div className="body">
       <div className="profile-box">
         <img
-          src="https://static8.depositphotos.com/1377527/930/i/600/depositphotos_9305418-stock-photo-middle-aged-businessman.jpg"
-          alt=""
+          src={profileInfo.profile_pic}
+          alt="User Profile"
           className="profile-picture"
         />
         <div className="user-info">
