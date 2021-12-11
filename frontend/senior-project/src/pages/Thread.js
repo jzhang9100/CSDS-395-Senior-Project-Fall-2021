@@ -69,13 +69,14 @@ export default function Thread({ props, token }) {
 
       <div className="Thread-Area">
         {articleComments.map((comment) => {
+          var easternTime = Date.parse(comment.create_date) - 18000000;
           return (
             <Card className="comment-card border-0 bg-transparent mx-auto my-3" key={comment.comment_id}>
               <Card.Body className="comment-card-body d-flex p-0 m-0">
                 <div className="h-100 w-100 my-auto me-auto">
                   <div className="d-flex">
                     <h6 className="ms-3 mt-2 mb-2 me-auto">{comment.username}</h6>
-                    <h6 className="me-3 mt-2 mb-2 ms-auto">{convert(Date.parse(comment.create_date))}</h6>
+                    <h6 className="me-3 mt-2 mb-2 ms-auto">{convert(easternTime)}</h6>
                   </div>
                   <hr className="my-0" />
                   <p className="mt-2">{comment.comment}</p>
