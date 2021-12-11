@@ -3,9 +3,19 @@ import "./StockGraph.css";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 export function StockGraph({historicalData}) {
+    console.log('historical data', historicalData)
+    let x = []
+    let y = []
+    for (let item in historicalData['Monthly Time Series']){
+      console.log(item)
+      x.push(item)
+      y.push(historicalData['Monthly Time Series'][item]['1. open'])
+    }
+    x = x.reverse();
+    y = y.reverse();
     let state = {
         dataLine: {
-          labels: ["Jan 2021", "Feb 2021", "Mar 2021", "Apr 2021", "May 2021", "June 2021", "July 2021", "Aug 2021", "Sept 2021", "Oct 2021"],
+          labels:  x,
           datasets: [
             {
               label: "Stock Price",
@@ -19,14 +29,14 @@ export function StockGraph({historicalData}) {
               borderJoinStyle: "miter",
               pointBorderColor: "2B7A78",
               pointBackgroundColor: "#2B7A78",
-              pointBorderWidth: 7,
+              pointBorderWidth: 0,
               pointHoverRadius: 5,
               pointHoverBackgroundColor: "#2B7A78",
               pointHoverBorderColor: "#2B7A78",
               pointHoverBorderWidth: 1,
-              pointRadius: 1,
-              pointHitRadius: 5,
-              data: [65, 59, 80, 81, 56, 55, 40, 40, 40, 50]
+              pointRadius: 0,
+              pointHitRadius: 1,
+              data: y
             },
           ]
         }

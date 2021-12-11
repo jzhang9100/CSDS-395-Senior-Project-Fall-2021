@@ -2,7 +2,9 @@ import React from 'react';
 import "./StockStats.css";
 import { Card, Table } from "react-bootstrap";
 
-export function StockStats({stockInfo, stockQuote, dailyData, currentPrice}) {
+export function StockStats({stockInfo, stockQuote, dailyData}) {
+    console.log('quote', stockQuote)
+    console.log('daily', dailyData)
     return (
         <div className="Stats-Area">
             <Card className="Result-Box mx-auto w-50">
@@ -14,7 +16,7 @@ export function StockStats({stockInfo, stockQuote, dailyData, currentPrice}) {
                         <tbody text="white">
                         <tr> 
                             <td>Current Price</td>
-                            <td>${currentPrice}</td>
+                            <td>${stockQuote['c']}</td>
                             
                         </tr>
                         <tr>

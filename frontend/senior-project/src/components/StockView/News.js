@@ -13,13 +13,13 @@ export function News(props) {
                             <Table borderless className="Company-Info-Text">
                                 <tbody>
                                 <tr>
-                                    <td>Date Published: Title of Article (News Source) (hyperlinked) </td>
+                                    <a href="https://www.foxnews.com/auto/electric-ford-mustang-mach-e-gets-a-big-price-hike">The electric Ford Mustang Mach-E just got a big price hike</a>
                                 </tr>
                                 <tr>
-                                    <td>Date Published: Title of Article (News Source) (hyperlinked) </td>
+                                    <a href="https://www.cnbc.com/2021/12/10/cramers-lightning-round-stick-with-ford-over-lightning-emotors.html">Cramer’s lightning round: Stick with Ford over Lightning eMotors</a>
                                 </tr>
                                 <tr>
-                                    <td>Date Published: Title of Article (News Source) (hyperlinked) </td>
+                                    <a href="https://finance.yahoo.com/video/chip-shortage-disrupts-gm-ford-135100348.html">Chip shortage disrupts GM and Ford production</a>
                                 </tr>
                                 </tbody>
                             </Table>

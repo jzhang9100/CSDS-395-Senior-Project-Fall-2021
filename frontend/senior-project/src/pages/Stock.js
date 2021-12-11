@@ -19,73 +19,46 @@ export default class Stock extends React.Component  {
     this.state = {
       stockQuote : null,
       historicalData : null,
-      dailyData : null
+      dailyData : null,
     };
-    console.log("ticker", this.props.ticker)
   }
 
-  async componentDidMount() {
-    const finnhubAPI = "c1se9aqad3i9o8uaclc0";
-    var ticker = this.props.ticker
-    let currentPriceAPI = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubAPI}`;
-
-    const response = await fetch(currentPriceAPI);
-    const json = await response.json();
-    this.setState({ stockQuote: json });
+  componentDidMount() {
+    this.fetchStockData();
   }
 
-  fetchStock() {
-    const finnhubAPI = "c1se9aqad3i9o8uaclc0";
-    var ticker = this.props.ticker
-    let currentPriceAPI = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${finnhubAPI}`;
+  fetchStockData() {
+    const apiKey1 = "BFW1POG1RFAENYS8";
+    let stockInfoAPI1 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.props.ticker}&outputsize=compact&apikey=${apiKey1}`;
 
-    console.log("url", currentPriceAPI)
+    fetch(stockInfoAPI1)
+      .then((response) => response.json())
+      .then(data => this.setState({ dailyData: data }))
+      .catch(error => console.log("the error is", error));
+
+    
+    const apiKey2 = "BFW1POG1RFAENYS8";
+    let stockInfoAPI2 = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.props.ticker}&outputsize=compact&apikey=${apiKey2}`;
+    fetch(stockInfoAPI2)
+      .then((response) => response.json())
+      .then(data => this.setState({ historicalData: data }))
+      .catch(error => console.log("the error is", error));
+
+      
+    const finnhubAPI = "c1se9aqad3i9o8uaclc0";
+    let currentPriceAPI = `https://finnhub.io/api/v1/quote?symbol=${this.props.ticker}&token=${finnhubAPI}`;
     fetch(currentPriceAPI)
       .then((response) => response.json())
-      .then((response) => {
-        if (response != null) {
-          console.log("response", response)
-          this.setState({ stockQuote : response })
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  fetchHistoricalData() {
-    const apiKey = "BFW1POG1RFAENYS8";
-    let stockInfoAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.props.ticker}&outputsize=compact&apikey=${apiKey}`;
-
-    fetch(stockInfoAPI)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response != null) {
-          this.setState({ historicalData : response })
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  async fetchDailyData() {
-    const apiKey = "BFW1POG1RFAENYS8";
-    let stockInfoAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.props.ticker}&outputsize=compact&apikey=${apiKey}`;
-
-    await fetch(stockInfoAPI)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response != null) {
-          this.setState({ dailyData : response })
-        }
-      });
+      .then(data => this.setState({ stockQuote: data }))
+      .catch(error => console.log("the error is", error));
   }
 
   render(){
-    console.log("stockquote", this.state.stockQuote)
-    console.log("daily", this.state.dailyData)
-    console.log("historical", this.state.historicalData)
+    if (!this.state.stockQuote || !this.state.dailyData || !this.state.historicalData) {
+      return <div />
+  }
+    else{
+      console.log(this.state);
       return(
           <div className="search-body text-center col-md-12">
           <div>
@@ -93,17 +66,16 @@ export default class Stock extends React.Component  {
             <Card.Header>
               <div>
                 <StockGraph name="Stock Ticker (Stock Name)" historicalData={this.state.historicalData}> </StockGraph>
-                <StockStats stockInfo={this.props.stockInfo} dailyData={this.state.dailyData} currentPrice={this.state.stockQuote}></StockStats>
-                <p className="historicalData">
-                  {this.state.historicalData}
-                </p>
+                <div class="flexbox-container">
+                <StockStats stockInfo={this.props.stockInfo} stockQuote={this.state.stockQuote} dailyData={this.state.dailyData}></StockStats>
                 <CompanyInfo stockInfo={this.props.stockInfo}> </CompanyInfo>
+                </div>
               </div>
             </Card.Header>
             <News></News>
-            <Comps></Comps>
           </div>
         </div>
       );
+    }
   }
 }
